@@ -42,7 +42,7 @@ namespace Horarios_CIES.Views
             // 
             this.lblHora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHora.AutoSize = true;
-            this.lblHora.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblHora.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.lblHora.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.lblHora.Location = new System.Drawing.Point(482, 451);
             this.lblHora.Name = "lblHora";
@@ -55,7 +55,7 @@ namespace Horarios_CIES.Views
             // 
             this.lbFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lbFecha.AutoSize = true;
-            this.lbFecha.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbFecha.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.lbFecha.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lbFecha.Location = new System.Drawing.Point(333, 500);
             this.lbFecha.Name = "lbFecha";
@@ -82,7 +82,7 @@ namespace Horarios_CIES.Views
             // 
             // Inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;

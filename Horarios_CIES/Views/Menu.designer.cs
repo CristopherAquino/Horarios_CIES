@@ -89,7 +89,7 @@ namespace Horarios_CIES
             this.btnHorarioGruConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnHorarioGruConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(163)))));
             this.btnHorarioGruConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHorarioGruConsulta.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHorarioGruConsulta.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
             this.btnHorarioGruConsulta.ForeColor = System.Drawing.Color.White;
             this.btnHorarioGruConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnHorarioGruConsulta.Image")));
             this.btnHorarioGruConsulta.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -111,7 +111,7 @@ namespace Horarios_CIES
             this.btnHorarioGruCrear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnHorarioGruCrear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(163)))));
             this.btnHorarioGruCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHorarioGruCrear.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHorarioGruCrear.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
             this.btnHorarioGruCrear.ForeColor = System.Drawing.Color.White;
             this.btnHorarioGruCrear.Image = ((System.Drawing.Image)(resources.GetObject("btnHorarioGruCrear.Image")));
             this.btnHorarioGruCrear.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -131,7 +131,7 @@ namespace Horarios_CIES
             this.btnHorarioGrupo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnHorarioGrupo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(128)))), ((int)(((byte)(215)))));
             this.btnHorarioGrupo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHorarioGrupo.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHorarioGrupo.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
             this.btnHorarioGrupo.ForeColor = System.Drawing.Color.White;
             this.btnHorarioGrupo.Image = ((System.Drawing.Image)(resources.GetObject("btnHorarioGrupo.Image")));
             this.btnHorarioGrupo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -151,7 +151,7 @@ namespace Horarios_CIES
             this.btnHorarioDocConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnHorarioDocConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(163)))));
             this.btnHorarioDocConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHorarioDocConsulta.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHorarioDocConsulta.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
             this.btnHorarioDocConsulta.ForeColor = System.Drawing.Color.White;
             this.btnHorarioDocConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnHorarioDocConsulta.Image")));
             this.btnHorarioDocConsulta.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -182,7 +182,7 @@ namespace Horarios_CIES
             this.btnInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(128)))), ((int)(((byte)(215)))));
             this.btnInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInicio.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInicio.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
             this.btnInicio.ForeColor = System.Drawing.Color.White;
             this.btnInicio.Image = ((System.Drawing.Image)(resources.GetObject("btnInicio.Image")));
             this.btnInicio.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -202,7 +202,7 @@ namespace Horarios_CIES
             this.btnHorarioDocCrear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnHorarioDocCrear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(106)))), ((int)(((byte)(163)))));
             this.btnHorarioDocCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHorarioDocCrear.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHorarioDocCrear.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
             this.btnHorarioDocCrear.ForeColor = System.Drawing.Color.White;
             this.btnHorarioDocCrear.Image = ((System.Drawing.Image)(resources.GetObject("btnHorarioDocCrear.Image")));
             this.btnHorarioDocCrear.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -222,7 +222,7 @@ namespace Horarios_CIES
             this.btnHorarioDocente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnHorarioDocente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(128)))), ((int)(((byte)(215)))));
             this.btnHorarioDocente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHorarioDocente.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHorarioDocente.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
             this.btnHorarioDocente.ForeColor = System.Drawing.Color.White;
             this.btnHorarioDocente.Image = ((System.Drawing.Image)(resources.GetObject("btnHorarioDocente.Image")));
             this.btnHorarioDocente.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -241,7 +241,7 @@ namespace Horarios_CIES
             this.btnDocente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnDocente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(128)))), ((int)(((byte)(215)))));
             this.btnDocente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDocente.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDocente.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
             this.btnDocente.ForeColor = System.Drawing.Color.White;
             this.btnDocente.Image = ((System.Drawing.Image)(resources.GetObject("btnDocente.Image")));
             this.btnDocente.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -260,7 +260,7 @@ namespace Horarios_CIES
             this.btnMateria.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnMateria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(128)))), ((int)(((byte)(215)))));
             this.btnMateria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMateria.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnMateria.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
             this.btnMateria.ForeColor = System.Drawing.Color.White;
             this.btnMateria.Image = ((System.Drawing.Image)(resources.GetObject("btnMateria.Image")));
             this.btnMateria.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -279,7 +279,7 @@ namespace Horarios_CIES
             this.btnGrupo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnGrupo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(128)))), ((int)(((byte)(215)))));
             this.btnGrupo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGrupo.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnGrupo.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
             this.btnGrupo.ForeColor = System.Drawing.Color.White;
             this.btnGrupo.Image = ((System.Drawing.Image)(resources.GetObject("btnGrupo.Image")));
             this.btnGrupo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -298,7 +298,7 @@ namespace Horarios_CIES
             this.btnCarrera.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnCarrera.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(128)))), ((int)(((byte)(215)))));
             this.btnCarrera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCarrera.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCarrera.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
             this.btnCarrera.ForeColor = System.Drawing.Color.White;
             this.btnCarrera.Image = ((System.Drawing.Image)(resources.GetObject("btnCarrera.Image")));
             this.btnCarrera.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -385,9 +385,9 @@ namespace Horarios_CIES
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(48, 1);
+            this.lblTitulo.Location = new System.Drawing.Point(41, 1);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(67, 25);
             this.lblTitulo.TabIndex = 0;
@@ -406,7 +406,7 @@ namespace Horarios_CIES
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1300, 650);
@@ -416,7 +416,7 @@ namespace Horarios_CIES
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Horarios CIES";
             this.Load += new System.EventHandler(this.Menu_Load);
             this.PanelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
