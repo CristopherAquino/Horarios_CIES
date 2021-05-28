@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Horarios_CIES.Models.DTO
 {
-    class Grupo
+    class GrupoModel
     {
         int _Id_Grupo;
         string _Nombre_Grupo;

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Horarios_CIES.Models.DTO
 {
-    class Carrera
+    class CarreraModel
     {
         int _IdCarrera;
         string _Nombre_Carrera;

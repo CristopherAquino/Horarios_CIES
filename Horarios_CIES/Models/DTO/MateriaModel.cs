@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Horarios_CIES.Models.DTO
 {
-    class Materia
+    class MateriaModel
     {
         int _Id_Materia;
         string _Codigo_Materia;

@@ -82,7 +82,6 @@
     <Compile Include="Models\DAO\Carrera.cs">
       <DependentUpon>DBEntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DAO\DBContext.cs" />
     <Compile Include="Models\DAO\DBEntityModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -113,12 +112,12 @@
     <Compile Include="Models\DAO\Materia.cs">
       <DependentUpon>DBEntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DTO\Carrera.cs" />
-    <Compile Include="Models\DTO\Docente.cs" />
-    <Compile Include="Models\DTO\Grupo.cs" />
-    <Compile Include="Models\DTO\HorarioDocente.cs" />
-    <Compile Include="Models\DTO\HorarioGrupo.cs" />
-    <Compile Include="Models\DTO\Materia.cs" />
+    <Compile Include="Models\DTO\CarreraModel.cs" />
+    <Compile Include="Models\DTO\DocenteModel.cs" />
+    <Compile Include="Models\DTO\GrupoModel.cs" />
+    <Compile Include="Models\DTO\HorarioDocenteModel.cs" />
+    <Compile Include="Models\DTO\HorarioGrupoModel.cs" />
+    <Compile Include="Models\DTO\MateriaModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Carrera.cs">
