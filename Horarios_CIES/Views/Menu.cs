@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Horarios_CIES.Controllers;
 
 namespace Horarios_CIES
 {
@@ -27,9 +28,12 @@ namespace Horarios_CIES
         int clickD = 1;
         int clickG = 1;
 
+        CarreraController carrera = new CarreraController();
+
         public Menu()
         {
             InitializeComponent();
+            carrera.obtenerCarreras();
         }
 
         private void Menu_Load(object sender, EventArgs e)
