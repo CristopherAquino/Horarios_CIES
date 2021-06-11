@@ -29,9 +29,9 @@ namespace Horarios_CIES.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAgregar = new AltoControls.AltoButton();
             this.txtNombreCarrera = new System.Windows.Forms.TextBox();
             this.TablaCarreras = new System.Windows.Forms.DataGridView();
@@ -58,20 +58,21 @@ namespace Horarios_CIES.Views
             this.btnAgregar.Size = new System.Drawing.Size(88, 30);
             this.btnAgregar.Stroke = false;
             this.btnAgregar.StrokeColor = System.Drawing.Color.Gray;
-            this.btnAgregar.TabIndex = 1;
-            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.Text = "AGREGAR";
             this.btnAgregar.Transparency = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtNombreCarrera
             // 
             this.txtNombreCarrera.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.txtNombreCarrera.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombreCarrera.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
             this.txtNombreCarrera.Location = new System.Drawing.Point(94, 81);
+            this.txtNombreCarrera.MaxLength = 60;
             this.txtNombreCarrera.Name = "txtNombreCarrera";
             this.txtNombreCarrera.Size = new System.Drawing.Size(245, 25);
-            this.txtNombreCarrera.TabIndex = 2;
-            this.txtNombreCarrera.TextChanged += new System.EventHandler(this.txtNombreCarrera_TextChanged);
+            this.txtNombreCarrera.TabIndex = 1;
             // 
             // TablaCarreras
             // 
@@ -83,37 +84,37 @@ namespace Horarios_CIES.Views
             this.TablaCarreras.BackgroundColor = System.Drawing.Color.White;
             this.TablaCarreras.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TablaCarreras.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Nirmala UI", 11F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaCarreras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nirmala UI", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaCarreras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.TablaCarreras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Nirmala UI", 9F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TablaCarreras.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nirmala UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TablaCarreras.DefaultCellStyle = dataGridViewCellStyle2;
             this.TablaCarreras.EnableHeadersVisualStyles = false;
             this.TablaCarreras.GridColor = System.Drawing.Color.Navy;
             this.TablaCarreras.Location = new System.Drawing.Point(94, 253);
             this.TablaCarreras.MultiSelect = false;
             this.TablaCarreras.Name = "TablaCarreras";
             this.TablaCarreras.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Nirmala UI", 9F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaCarreras.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Nirmala UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaCarreras.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.TablaCarreras.RowHeadersVisible = false;
             this.TablaCarreras.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.TablaCarreras.RowTemplate.Height = 25;
@@ -138,8 +139,8 @@ namespace Horarios_CIES.Views
             this.btnModificar.Size = new System.Drawing.Size(88, 30);
             this.btnModificar.Stroke = false;
             this.btnModificar.StrokeColor = System.Drawing.Color.Gray;
-            this.btnModificar.TabIndex = 4;
-            this.btnModificar.Text = "Modificar";
+            this.btnModificar.TabIndex = 5;
+            this.btnModificar.Text = "MODIFICAR";
             this.btnModificar.Transparency = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
@@ -159,8 +160,8 @@ namespace Horarios_CIES.Views
             this.btnEliminar.Size = new System.Drawing.Size(88, 30);
             this.btnEliminar.Stroke = false;
             this.btnEliminar.StrokeColor = System.Drawing.Color.Gray;
-            this.btnEliminar.TabIndex = 5;
-            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TabIndex = 6;
+            this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.Transparency = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -172,22 +173,23 @@ namespace Horarios_CIES.Views
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
             this.label1.Location = new System.Drawing.Point(94, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 21);
+            this.label1.Size = new System.Drawing.Size(170, 21);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Nombre de Carrera";
+            this.label1.Text = "NOMBRE DE CARRERA";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtBuscar
             // 
             this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.txtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBuscar.Font = new System.Drawing.Font("Nirmala UI", 12F);
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.txtBuscar.Location = new System.Drawing.Point(94, 218);
+            this.txtBuscar.MaxLength = 60;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(404, 29);
-            this.txtBuscar.TabIndex = 7;
-            this.txtBuscar.Text = "Buscar Por Nombre De Carrera";
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            this.txtBuscar.TabIndex = 2;
+            this.txtBuscar.Text = "BUSCAR POR NOMBRE DE CARRERA";
             this.txtBuscar.Enter += new System.EventHandler(this.txtBuscar_Enter);
             this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
             this.txtBuscar.Leave += new System.EventHandler(this.txtBuscar_Leave);

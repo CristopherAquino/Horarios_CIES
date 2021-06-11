@@ -89,7 +89,7 @@ namespace Horarios_CIES
             this.btnHorarioGruConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnHorarioGruConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(163)))));
             this.btnHorarioGruConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHorarioGruConsulta.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
+            this.btnHorarioGruConsulta.Font = new System.Drawing.Font("Segoe UI Emoji", 10F);
             this.btnHorarioGruConsulta.ForeColor = System.Drawing.Color.White;
             this.btnHorarioGruConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnHorarioGruConsulta.Image")));
             this.btnHorarioGruConsulta.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -97,7 +97,7 @@ namespace Horarios_CIES
             this.btnHorarioGruConsulta.Name = "btnHorarioGruConsulta";
             this.btnHorarioGruConsulta.Size = new System.Drawing.Size(206, 39);
             this.btnHorarioGruConsulta.TabIndex = 11;
-            this.btnHorarioGruConsulta.Text = "Consulta/Modificar    ";
+            this.btnHorarioGruConsulta.Text = "CONSULTA/MODIFICAR ";
             this.btnHorarioGruConsulta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHorarioGruConsulta.UseVisualStyleBackColor = false;
             this.btnHorarioGruConsulta.Visible = false;
@@ -119,7 +119,7 @@ namespace Horarios_CIES
             this.btnHorarioGruCrear.Name = "btnHorarioGruCrear";
             this.btnHorarioGruCrear.Size = new System.Drawing.Size(206, 39);
             this.btnHorarioGruCrear.TabIndex = 10;
-            this.btnHorarioGruCrear.Text = "Crear";
+            this.btnHorarioGruCrear.Text = "CREAR";
             this.btnHorarioGruCrear.UseVisualStyleBackColor = false;
             this.btnHorarioGruCrear.Visible = false;
             this.btnHorarioGruCrear.Click += new System.EventHandler(this.btnHorarioGruCrear_Click);
@@ -139,7 +139,7 @@ namespace Horarios_CIES
             this.btnHorarioGrupo.Name = "btnHorarioGrupo";
             this.btnHorarioGrupo.Size = new System.Drawing.Size(206, 39);
             this.btnHorarioGrupo.TabIndex = 9;
-            this.btnHorarioGrupo.Text = "Horario Grupo";
+            this.btnHorarioGrupo.Text = "    HORARIO GRUPO";
             this.btnHorarioGrupo.UseVisualStyleBackColor = false;
             this.btnHorarioGrupo.Click += new System.EventHandler(this.btnHorarioGrupo_Click);
             // 
@@ -151,7 +151,7 @@ namespace Horarios_CIES
             this.btnHorarioDocConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
             this.btnHorarioDocConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(163)))));
             this.btnHorarioDocConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHorarioDocConsulta.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
+            this.btnHorarioDocConsulta.Font = new System.Drawing.Font("Segoe UI Emoji", 10F);
             this.btnHorarioDocConsulta.ForeColor = System.Drawing.Color.White;
             this.btnHorarioDocConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnHorarioDocConsulta.Image")));
             this.btnHorarioDocConsulta.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -159,7 +159,7 @@ namespace Horarios_CIES
             this.btnHorarioDocConsulta.Name = "btnHorarioDocConsulta";
             this.btnHorarioDocConsulta.Size = new System.Drawing.Size(206, 39);
             this.btnHorarioDocConsulta.TabIndex = 8;
-            this.btnHorarioDocConsulta.Text = "Consulta/Modificar    ";
+            this.btnHorarioDocConsulta.Text = "CONSULTA/MODIFICAR  ";
             this.btnHorarioDocConsulta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHorarioDocConsulta.UseVisualStyleBackColor = false;
             this.btnHorarioDocConsulta.Visible = false;
@@ -190,7 +190,7 @@ namespace Horarios_CIES
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(206, 39);
             this.btnInicio.TabIndex = 1;
-            this.btnInicio.Text = "Inicio";
+            this.btnInicio.Text = "INICIO";
             this.btnInicio.UseVisualStyleBackColor = false;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
@@ -210,7 +210,7 @@ namespace Horarios_CIES
             this.btnHorarioDocCrear.Name = "btnHorarioDocCrear";
             this.btnHorarioDocCrear.Size = new System.Drawing.Size(206, 39);
             this.btnHorarioDocCrear.TabIndex = 7;
-            this.btnHorarioDocCrear.Text = "Crear";
+            this.btnHorarioDocCrear.Text = "CREAR";
             this.btnHorarioDocCrear.UseVisualStyleBackColor = false;
             this.btnHorarioDocCrear.Visible = false;
             this.btnHorarioDocCrear.Click += new System.EventHandler(this.btnHorarioDocCrear_Click);
@@ -230,7 +230,7 @@ namespace Horarios_CIES
             this.btnHorarioDocente.Name = "btnHorarioDocente";
             this.btnHorarioDocente.Size = new System.Drawing.Size(206, 39);
             this.btnHorarioDocente.TabIndex = 6;
-            this.btnHorarioDocente.Text = "Horario Docente";
+            this.btnHorarioDocente.Text = "      HORARIO DOCENTE";
             this.btnHorarioDocente.UseVisualStyleBackColor = false;
             this.btnHorarioDocente.Click += new System.EventHandler(this.btnHorarioDocente_Click);
             // 
@@ -249,7 +249,7 @@ namespace Horarios_CIES
             this.btnDocente.Name = "btnDocente";
             this.btnDocente.Size = new System.Drawing.Size(206, 39);
             this.btnDocente.TabIndex = 5;
-            this.btnDocente.Text = "Docente";
+            this.btnDocente.Text = "DOCENTE";
             this.btnDocente.UseVisualStyleBackColor = false;
             this.btnDocente.Click += new System.EventHandler(this.btnDocente_Click);
             // 
@@ -268,7 +268,7 @@ namespace Horarios_CIES
             this.btnMateria.Name = "btnMateria";
             this.btnMateria.Size = new System.Drawing.Size(206, 39);
             this.btnMateria.TabIndex = 4;
-            this.btnMateria.Text = "Materia";
+            this.btnMateria.Text = "MATERIA";
             this.btnMateria.UseVisualStyleBackColor = false;
             this.btnMateria.Click += new System.EventHandler(this.btnMateria_Click);
             // 
@@ -287,7 +287,7 @@ namespace Horarios_CIES
             this.btnGrupo.Name = "btnGrupo";
             this.btnGrupo.Size = new System.Drawing.Size(206, 39);
             this.btnGrupo.TabIndex = 3;
-            this.btnGrupo.Text = "Grupo";
+            this.btnGrupo.Text = "GRUPO";
             this.btnGrupo.UseVisualStyleBackColor = false;
             this.btnGrupo.Click += new System.EventHandler(this.btnGrupo_Click);
             // 
@@ -306,7 +306,7 @@ namespace Horarios_CIES
             this.btnCarrera.Name = "btnCarrera";
             this.btnCarrera.Size = new System.Drawing.Size(206, 39);
             this.btnCarrera.TabIndex = 2;
-            this.btnCarrera.Text = "Carrera";
+            this.btnCarrera.Text = "CARRERA";
             this.btnCarrera.UseVisualStyleBackColor = false;
             this.btnCarrera.Click += new System.EventHandler(this.btnCarrera_Click);
             // 

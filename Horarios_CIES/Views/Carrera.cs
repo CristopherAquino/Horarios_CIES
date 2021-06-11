@@ -25,10 +25,11 @@ namespace Horarios_CIES.Views
             try
             {
                 Obtener();
+                txtNombreCarrera.Focus();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ERROR: " + ex.Message);
             }
         }
 
@@ -38,10 +39,11 @@ namespace Horarios_CIES.Views
             {
                 TablaCarreras.DataSource = carrera.obtenerCarreras();
                 TablaCarreras.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                TablaCarreras.ClearSelection();
             }
             catch (Exception a)
             {
-                MessageBox.Show("Sin conexión a datos: " + a.Message);
+                MessageBox.Show("SIN CONEXION A DATOS: " + a.Message);
             }
         }
 
@@ -61,13 +63,13 @@ namespace Horarios_CIES.Views
             }
             catch (Exception a)
             {
-                MessageBox.Show("Sin conexión a datos: " + a.Message);
+                MessageBox.Show("SIN CONEXION A DATOS: " + a.Message);
             }
         }
 
         private void txtBuscar_Enter(object sender, EventArgs e)
         {
-            if (txtBuscar.Text == "Buscar Por Nombre De Carrera")
+            if (txtBuscar.Text == "BUSCAR POR NOMBRE DE CARRERA")
             {
                 txtBuscar.Text = "";
                 txtBuscar.ForeColor = Color.Black;
@@ -78,7 +80,7 @@ namespace Horarios_CIES.Views
         {
             if (txtBuscar.Text == "")
             {
-                txtBuscar.Text = "Buscar Por Nombre De Carrera";
+                txtBuscar.Text = "BUSCAR POR NOMBRE DE CARRERA";
                 txtBuscar.ForeColor = Color.FromArgb(113, 113, 113);
             }
         }
@@ -91,7 +93,7 @@ namespace Horarios_CIES.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ERROR: " + ex.Message);
             }
         }
 
@@ -107,12 +109,12 @@ namespace Horarios_CIES.Views
                 }
                 else
                 {
-                    MessageBox.Show("Campo Vacío");
+                    MessageBox.Show("CAMPOS VACIOS");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("ERROR: " + ex.Message);
             }
         }
 
@@ -133,21 +135,28 @@ namespace Horarios_CIES.Views
         {
             try
             {
-                int? id = getid();
-                if (id != null)
+                if (!txtNombreCarrera.Text.Equals(""))
                 {
-                    carrera.Modificar((int)id, txtNombreCarrera.Text);
-                    txtNombreCarrera.Clear();
-                    Obtener();
+                    int? id = getid();
+                    if (id != null)
+                    {
+                        carrera.Modificar((int)id, txtNombreCarrera.Text);
+                        txtNombreCarrera.Clear();
+                        Obtener();
+                    }
+                    else
+                    {
+                        MessageBox.Show("SELECCIONE LA FILA A MODIFICAR");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("sin modificaciones");
+                    MessageBox.Show("SIN MODIFICACIONES");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ERROR: " + ex.Message);
             }
         }
 
@@ -155,21 +164,28 @@ namespace Horarios_CIES.Views
         {
             try
             {
-                int? id = getid();
-                if (id != null)
+                if (!txtNombreCarrera.Text.Equals(""))
                 {
-                    carrera.Eliminar((int)id);
-                    txtNombreCarrera.Clear();
-                    Obtener();
+                    int? id = getid();
+                    if (id != null)
+                    {
+                        carrera.Eliminar((int)id);
+                        txtNombreCarrera.Clear();
+                        Obtener();
+                    }
+                    else
+                    {
+                        MessageBox.Show("SELECCIONE LA FILA A ELIMINAR");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Selecciona la fila a eliminar");
+                    MessageBox.Show("SELECCIONE LA FILA A ELIMINAR");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("ERROR: " + ex.Message);
             }
         }
 
@@ -181,20 +197,8 @@ namespace Horarios_CIES.Views
             }
             catch (Exception x)
             {
-                MessageBox.Show("Error", "Selección" + x.ToString());
+                MessageBox.Show("ERROR", "SELECCIÓN" + x.ToString());
             }
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            txtBuscar.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtBuscar.Text);
-            txtBuscar.SelectionStart = txtBuscar.Text.Length;
-        }
-
-        private void txtNombreCarrera_TextChanged(object sender, EventArgs e)
-        {
-            txtNombreCarrera.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombreCarrera.Text);
-            txtBuscar.SelectionStart = txtBuscar.Text.Length;
         }
     }
 }

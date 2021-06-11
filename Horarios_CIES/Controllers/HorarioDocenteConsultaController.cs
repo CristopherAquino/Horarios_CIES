@@ -6,12 +6,10 @@ using Horarios_CIES.Views;
 using Horarios_CIES.Models.DTO;
 using Horarios_CIES.Models.DAO;
 using System.Data;
-using System.Data.Entity;
-using System.Data.SQLite;
 
 namespace Horarios_CIES.Controllers
 {
-    public class GrupoController
+    class HorarioDocenteConsultaController
     {
         public IEnumerable<GrupoModelObtener> obtenerGrupos()
         {
@@ -48,8 +46,8 @@ namespace Horarios_CIES.Controllers
             using (DBContextString db = new DBContextString())
             {
                 var egrupo = (from d in db.Grupo
-                                where d.Id_Grupo == id
-                                select d).FirstOrDefault();
+                              where d.Id_Grupo == id
+                              select d).FirstOrDefault();
 
                 db.Grupo.Remove(egrupo);
                 db.SaveChanges();
@@ -82,21 +80,6 @@ namespace Horarios_CIES.Controllers
                          Nombre_Grupo = d.Nombre_Grupo,
                          Cuatrimestre = d.Cuatrimestre,
                          NombreCarrera = d.Carrera.Nombre_Carrera
-                     }).ToList();
-                return lst;
-            }
-        }
-
-        public IEnumerable<CarreraModel> combo()
-        {
-            using (DBContextString db = new DBContextString())
-            {
-                IEnumerable<CarreraModel> lst =
-                    (from d in db.Carrera
-                     select new CarreraModel
-                     {
-                         IdCarrera = (int)d.IdCarrera,
-                         Nombre_Carrera = d.Nombre_Carrera
                      }).ToList();
                 return lst;
             }

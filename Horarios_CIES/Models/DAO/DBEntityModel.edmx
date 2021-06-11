@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\cris4\OneDrive\Escritorio\Horarios_CIES\Horarios_CIES\DBContext.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBEntityModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\cris4\OneDrive\Escritorio\Horarios_CIES\Horarios_CIES\DBContext.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Carrera">
           <Key>
             <PropertyRef Name="IdCarrera" />
@@ -18,10 +18,10 @@
           </Key>
           <Property Name="Id_Docente" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre_Docente" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="Apellido_Paterno" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="Apellido_Materno" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="Telefono" Type="decimal" Precision="53" Scale="0" Nullable="false" />
-          <Property Name="Correo_Electronico" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Telefono_Celular" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Telefono_Casa" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Telefono_Oficina" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Correo_Electronico" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="Grupo">
           <Key>
@@ -133,7 +133,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBModelStoreContainer">
+        <EntityContainer Name="DBEntityModelStoreContainer">
           <EntitySet Name="Carrera" EntityType="Self.Carrera" store:Type="Tables" />
           <EntitySet Name="Docente" EntityType="Self.Docente" store:Type="Tables" />
           <EntitySet Name="Grupo" EntityType="Self.Grupo" store:Type="Tables" />
@@ -169,7 +169,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DBEntityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Carrera">
           <Key>
             <PropertyRef Name="IdCarrera" />
@@ -184,10 +184,10 @@
           </Key>
           <Property Name="Id_Docente" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre_Docente" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Apellido_Paterno" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Apellido_Materno" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Telefono" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
-          <Property Name="Correo_Electronico" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono_Celular" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono_Casa" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono_Oficina" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Correo_Electronico" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HorarioDocente" Relationship="Self.FK_HorarioDocente_0_0" FromRole="Docente" ToRole="HorarioDocente" />
         </EntityType>
         <EntityType Name="Grupo">
@@ -347,9 +347,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBContextString">
+        <EntityContainerMapping StorageEntityContainer="DBEntityModelStoreContainer" CdmEntityContainer="DBContextString">
           <EntitySetMapping Name="Carrera">
-            <EntityTypeMapping TypeName="DBModel.Carrera">
+            <EntityTypeMapping TypeName="DBEntityModel.Carrera">
               <MappingFragment StoreEntitySet="Carrera">
                 <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
                 <ScalarProperty Name="Nombre_Carrera" ColumnName="Nombre_Carrera" />
@@ -357,19 +357,19 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Docente">
-            <EntityTypeMapping TypeName="DBModel.Docente">
+            <EntityTypeMapping TypeName="DBEntityModel.Docente">
               <MappingFragment StoreEntitySet="Docente">
                 <ScalarProperty Name="Id_Docente" ColumnName="Id_Docente" />
                 <ScalarProperty Name="Nombre_Docente" ColumnName="Nombre_Docente" />
-                <ScalarProperty Name="Apellido_Paterno" ColumnName="Apellido_Paterno" />
-                <ScalarProperty Name="Apellido_Materno" ColumnName="Apellido_Materno" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Telefono_Celular" ColumnName="Telefono_Celular" />
+                <ScalarProperty Name="Telefono_Casa" ColumnName="Telefono_Casa" />
+                <ScalarProperty Name="Telefono_Oficina" ColumnName="Telefono_Oficina" />
                 <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Grupo">
-            <EntityTypeMapping TypeName="DBModel.Grupo">
+            <EntityTypeMapping TypeName="DBEntityModel.Grupo">
               <MappingFragment StoreEntitySet="Grupo">
                 <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
                 <ScalarProperty Name="Nombre_Grupo" ColumnName="Nombre_Grupo" />
@@ -379,7 +379,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HorarioDocente">
-            <EntityTypeMapping TypeName="DBModel.HorarioDocente">
+            <EntityTypeMapping TypeName="DBEntityModel.HorarioDocente">
               <MappingFragment StoreEntitySet="HorarioDocente">
                 <ScalarProperty Name="Id_HorarioDocente" ColumnName="Id_HorarioDocente" />
                 <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
@@ -392,7 +392,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HorarioGrupo">
-            <EntityTypeMapping TypeName="DBModel.HorarioGrupo">
+            <EntityTypeMapping TypeName="DBEntityModel.HorarioGrupo">
               <MappingFragment StoreEntitySet="HorarioGrupo">
                 <ScalarProperty Name="Id_HorarioGrupo" ColumnName="Id_HorarioGrupo" />
                 <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
@@ -401,7 +401,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Materia">
-            <EntityTypeMapping TypeName="DBModel.Materia">
+            <EntityTypeMapping TypeName="DBEntityModel.Materia">
               <MappingFragment StoreEntitySet="Materia">
                 <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
                 <ScalarProperty Name="Codigo_Materia" ColumnName="Codigo_Materia" />

@@ -22,9 +22,9 @@ namespace Horarios_CIES.Models.DAO
     
         public long Id_Docente { get; set; }
         public string Nombre_Docente { get; set; }
-        public string Apellido_Paterno { get; set; }
-        public string Apellido_Materno { get; set; }
-        public decimal Telefono { get; set; }
+        public string Telefono_Celular { get; set; }
+        public string Telefono_Casa { get; set; }
+        public string Telefono_Oficina { get; set; }
         public string Correo_Electronico { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

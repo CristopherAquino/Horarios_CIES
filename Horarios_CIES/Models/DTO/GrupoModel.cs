@@ -1,62 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Horarios_CIES.Models.DTO
 {
-    class GrupoModel
+    public class GrupoModel
     {
-        int _Id_Grupo;
-        string _Nombre_Grupo;
-        string _Cuatrimestre;
-        int _Id_Carrera;
+        [DisplayName("ID")]
+        public int Id_Grupo { get; set; }
+        [Required]
 
-        public int Id_Grupo
-        {
-            get
-            {
-                return _Id_Grupo;
-            }
-            set
-            {
-                _Id_Grupo = value;
-            }
-        }
+        [DisplayName("NOMBRE DE GRUPO")]
+        public string Nombre_Grupo { get; set; }
 
-        public string Nombre_Grupo
-        {
-            get
-            {
-                return _Nombre_Grupo;
-            }
-            set
-            {
-                _Nombre_Grupo = value;
-            }
-        }
+        [DisplayName("CUATRIMESTRE")]
+        public string Cuatrimestre { get; set; }
 
-        public string Cuatrimestre
-        {
-            get
-            {
-                return _Cuatrimestre;
-            }
-            set
-            {
-                _Cuatrimestre = value;
-            }
-        }
+        public int Id_Carrera { get; set; }
 
-        public int Id_Carrera
-        {
-            get
-            {
-                return _Id_Carrera;
-            }
-            set
-            {
-                _Id_Carrera = value;
-            }
-        }
+        [DisplayName("CARRERA")]
+        public string NombreCarrera { get; set; }
+    }
+
+    public class GrupoModelObtener
+    {
+        [DisplayName("ID")]
+        public int Id_Grupo { get; set; }
+        [Required]
+
+        [DisplayName("NOMBRE DE GRUPO")]
+        public string Nombre_Grupo { get; set; }
+
+        [DisplayName("CUATRIMESTRE")]
+        public string Cuatrimestre { get; set; }
+
+        [DisplayName("CARRERA")]
+        public string NombreCarrera { get; set; }
     }
 }

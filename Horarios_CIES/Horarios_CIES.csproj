@@ -77,7 +77,8 @@
     <Compile Include="Controllers\CarreraController.cs" />
     <Compile Include="Controllers\DocenteController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
-    <Compile Include="Controllers\HorarioDocenteController.cs" />
+    <Compile Include="Controllers\HorarioDocenteConsultaController.cs" />
+    <Compile Include="Controllers\HorarioDocenteCrearController.cs" />
     <Compile Include="Controllers\HorarioGrupoController.cs" />
     <Compile Include="Controllers\MateriaController.cs" />
     <Compile Include="Models\DAO\Carrera.cs">
@@ -245,6 +246,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
     <Content Include="Models\DAO\DBEntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBEntityModel.edmx</DependentUpon>
@@ -255,9 +260,6 @@
       <DependentUpon>DBEntityModel.edmx</DependentUpon>
       <LastGenOutput>DBEntityModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

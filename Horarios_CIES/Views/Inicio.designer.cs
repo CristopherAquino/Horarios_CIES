@@ -34,7 +34,8 @@ namespace Horarios_CIES.Views
             this.lblHora = new System.Windows.Forms.Label();
             this.lbFecha = new System.Windows.Forms.Label();
             this.ImgLogo = new System.Windows.Forms.PictureBox();
-            this.timerHF = new System.Windows.Forms.Timer(this.components);
+            this.timerH = new System.Windows.Forms.Timer(this.components);
+            this.timerF = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ImgLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@ namespace Horarios_CIES.Views
             this.lbFecha.AutoSize = true;
             this.lbFecha.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.lbFecha.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbFecha.Location = new System.Drawing.Point(333, 500);
+            this.lbFecha.Location = new System.Drawing.Point(326, 500);
             this.lbFecha.Name = "lbFecha";
             this.lbFecha.Size = new System.Drawing.Size(254, 45);
             this.lbFecha.TabIndex = 1;
@@ -75,10 +76,15 @@ namespace Horarios_CIES.Views
             this.ImgLogo.TabIndex = 2;
             this.ImgLogo.TabStop = false;
             // 
-            // timerHF
+            // timerH
             // 
-            this.timerHF.Enabled = true;
-            this.timerHF.Tick += new System.EventHandler(this.timerHF_Tick);
+            this.timerH.Enabled = true;
+            this.timerH.Tick += new System.EventHandler(this.timerHF_Tick);
+            // 
+            // timerF
+            // 
+            this.timerF.Enabled = true;
+            this.timerF.Tick += new System.EventHandler(this.timerF_Tick);
             // 
             // Inicio
             // 
@@ -105,6 +111,7 @@ namespace Horarios_CIES.Views
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Label lbFecha;
         private System.Windows.Forms.PictureBox ImgLogo;
-        private System.Windows.Forms.Timer timerHF;
+        private System.Windows.Forms.Timer timerH;
+        private System.Windows.Forms.Timer timerF;
     }
 }

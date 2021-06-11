@@ -17,8 +17,13 @@ namespace Horarios_CIES.Views
 
         private void timerHF_Tick(object sender, EventArgs e)
         {
-            lbFecha.Text = DateTime.Now.ToLongDateString();
             lblHora.Text = DateTime.Now.ToString("HH:mm:ssss");
+        }
+
+        private void timerF_Tick(object sender, EventArgs e)
+        {
+            lbFecha.Text = DateTime.Now.ToLongDateString();
+            lbFecha.Text = lbFecha.Text.ToUpper();
         }
     }
 }
