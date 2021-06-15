@@ -24,7 +24,7 @@ namespace Horarios_CIES.Views
             }
             catch (Exception a)
             {
-                MessageBox.Show("Sin conexión a datos");
+                MessageBox.Show("Sin conexión a datos" + a.Message);
             }
         }
 

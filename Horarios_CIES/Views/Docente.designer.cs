@@ -160,6 +160,7 @@ namespace Horarios_CIES.Views
             // txtNombreDocente
             // 
             this.txtNombreDocente.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.txtNombreDocente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombreDocente.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
             this.txtNombreDocente.Location = new System.Drawing.Point(94, 79);
             this.txtNombreDocente.MaxLength = 100;

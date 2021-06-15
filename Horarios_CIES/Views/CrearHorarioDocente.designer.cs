@@ -71,6 +71,7 @@ namespace Horarios_CIES.Views
             this.dias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.final = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminar = new AltoControls.AltoButton();
             ((System.ComponentModel.ISupportInitialize)(this.TablaHorarioDocenteADD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDatos)).BeginInit();
             this.SuspendLayout();
@@ -268,7 +269,7 @@ namespace Horarios_CIES.Views
             this.btnAgregar.ForeColor = System.Drawing.Color.Black;
             this.btnAgregar.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(179)))), ((int)(((byte)(180)))));
             this.btnAgregar.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(179)))), ((int)(((byte)(180)))));
-            this.btnAgregar.Location = new System.Drawing.Point(450, 580);
+            this.btnAgregar.Location = new System.Drawing.Point(410, 580);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Radius = 5;
             this.btnAgregar.Size = new System.Drawing.Size(88, 30);
@@ -321,6 +322,7 @@ namespace Horarios_CIES.Views
             // txtCiclo
             // 
             this.txtCiclo.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.txtCiclo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCiclo.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
             this.txtCiclo.Location = new System.Drawing.Point(385, 60);
             this.txtCiclo.MaxLength = 60;
@@ -457,7 +459,7 @@ namespace Horarios_CIES.Views
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(109)))), ((int)(((byte)(172)))));
             this.btnGuardar.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(109)))), ((int)(((byte)(172)))));
-            this.btnGuardar.Location = new System.Drawing.Point(544, 580);
+            this.btnGuardar.Location = new System.Drawing.Point(598, 580);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Radius = 5;
             this.btnGuardar.Size = new System.Drawing.Size(88, 30);
@@ -527,12 +529,34 @@ namespace Horarios_CIES.Views
             this.final.ReadOnly = true;
             this.final.Visible = false;
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Active1 = System.Drawing.Color.OrangeRed;
+            this.btnEliminar.Active2 = System.Drawing.Color.OrangeRed;
+            this.btnEliminar.BackColor = System.Drawing.Color.Transparent;
+            this.btnEliminar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnEliminar.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminar.Inactive1 = System.Drawing.Color.Red;
+            this.btnEliminar.Inactive2 = System.Drawing.Color.Red;
+            this.btnEliminar.Location = new System.Drawing.Point(504, 580);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Radius = 5;
+            this.btnEliminar.Size = new System.Drawing.Size(88, 30);
+            this.btnEliminar.Stroke = false;
+            this.btnEliminar.StrokeColor = System.Drawing.Color.Gray;
+            this.btnEliminar.TabIndex = 56;
+            this.btnEliminar.Text = "LIMPIAR";
+            this.btnEliminar.Transparency = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // CrearHorarioDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1097, 621);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.dtDatos);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.ComboDia);
@@ -591,5 +615,6 @@ namespace Horarios_CIES.Views
         private System.Windows.Forms.DataGridViewTextBoxColumn dias;
         private System.Windows.Forms.DataGridViewTextBoxColumn inicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn final;
+        private AltoControls.AltoButton btnEliminar;
     }
 }

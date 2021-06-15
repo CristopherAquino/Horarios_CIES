@@ -24,7 +24,7 @@ namespace Horarios_CIES.Models.DAO
         public long Id_Grupo { get; set; }
         public string Nombre_Grupo { get; set; }
         public string Cuatrimestre { get; set; }
-        public Nullable<long> Id_Carrera { get; set; }
+        public long Id_Carrera { get; set; }
     
         public virtual Carrera Carrera { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

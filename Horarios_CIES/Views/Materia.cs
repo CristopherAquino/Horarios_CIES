@@ -23,6 +23,7 @@ namespace Horarios_CIES.Views
             {
                 Obtener();
                 ObtenerCombo();
+                ValidacionRegistros();
                 txtCodigoMateria.Focus();
             }
             catch (Exception ex)
@@ -92,6 +93,23 @@ namespace Horarios_CIES.Views
             catch (Exception a)
             {
                 MessageBox.Show("SIN CONEXION A DATOS: " + a.Message);
+            }
+        }
+
+        private void ValidacionRegistros()
+        {
+            if (ComboGrupo.Text.Equals(""))
+            {
+                MessageBox.Show("REGISTRE GRUPO");
+                btnAgregar.Enabled = false;
+                btnModificar.Enabled = false;
+                btnEliminar.Enabled = false;
+            }
+            else
+            {
+                btnAgregar.Enabled = true;
+                btnModificar.Enabled = true;
+                btnEliminar.Enabled = true;
             }
         }
 

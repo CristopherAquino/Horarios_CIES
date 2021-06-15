@@ -11,33 +11,52 @@ namespace Horarios_CIES.Controllers
 {
     class HorarioDocenteConsultaController
     {
-        public IEnumerable<GrupoModelObtener> obtenerGrupos()
+        public IEnumerable<HorarioDocenteMostrarModel> obtenerHorariosDocentes()
         {
             using (DBContextString db = new DBContextString())
             {
-                IEnumerable<GrupoModelObtener> lst =
-                    (from d in db.Grupo
-                     select new GrupoModelObtener
+                IEnumerable<HorarioDocenteMostrarModel> lst =
+                    (from d in db.HorarioDocente
+                     select new HorarioDocenteMostrarModel
                      {
-                         Id_Grupo = (int)d.Id_Grupo,
-                         Nombre_Grupo = d.Nombre_Grupo,
-                         Cuatrimestre = d.Cuatrimestre,
-                         NombreCarrera = d.Carrera.Nombre_Carrera
+                         Id = (int)d.Id,
+                         Ciclo = d.Ciclo,
+                         Nombre_Docente = d.Docente.Nombre_Docente,
+                         Nombre_Materia = d.Materia.Nombre_Materia,
+                         Dia = d.Dia,
+                         Hora_Inicio = d.Hora_Inicio,
+                         Hora_Fin = d.Hora_Fin
+                     }).ToList();
+                return lst;
+            }
+        }
+        public IEnumerable<MateriaModel> comboMateria()
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                IEnumerable<MateriaModel> lst =
+                    (from d in db.Materia
+                     select new MateriaModel
+                     {
+                         Id_Materia = (int)d.Id_Materia,
+                         Nombre_Materia = d.Nombre_Materia
                      }).ToList();
                 return lst;
             }
         }
 
-        public void añadir(string nombre, string cuatrimestre, int carrera)
+        public IEnumerable<DocenteModel> comboDocente()
         {
             using (DBContextString db = new DBContextString())
             {
-                Models.DAO.Grupo ogrupo = new Models.DAO.Grupo();
-                ogrupo.Nombre_Grupo = nombre;
-                ogrupo.Cuatrimestre = cuatrimestre;
-                ogrupo.Id_Carrera = carrera;
-                db.Grupo.Add(ogrupo);
-                db.SaveChanges();
+                IEnumerable<DocenteModel> lst =
+                    (from d in db.Docente
+                     select new DocenteModel
+                     {
+                         Id_Docente = (int)d.Id_Docente,
+                         Nombre_Docente = d.Nombre_Docente
+                     }).ToList();
+                return lst;
             }
         }
 
@@ -45,20 +64,20 @@ namespace Horarios_CIES.Controllers
         {
             using (DBContextString db = new DBContextString())
             {
-                var egrupo = (from d in db.Grupo
-                              where d.Id_Grupo == id
+                var ehorario = (from d in db.HorarioDocente
+                              where d.Id_Docente == id
                               select d).FirstOrDefault();
 
-                db.Grupo.Remove(egrupo);
+                db.HorarioDocente.Remove(ehorario);
                 db.SaveChanges();
             }
         }
 
-        public void Modificar(int id, string nombre, string cuatrimestre, int carrera)
+        public void Modificar(int idM, int idD, string ciclo, string dia, string horai, string horaf, int id)
         {
             using (DBContextString db = new DBContextString())
             {
-                var update = db.Grupo.Find(id);
+                var update = db.HorarioDocente.FindFind(id);
                 update.Nombre_Grupo = nombre;
                 update.Cuatrimestre = cuatrimestre;
                 update.Id_Carrera = carrera;
@@ -67,19 +86,43 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public IEnumerable<GrupoModelObtener> Consulta(string palabra)
+        public IEnumerable<HorarioDocenteMostrarModel> Consulta(string palabra)
         {
             using (DBContextString db = new DBContextString())
             {
-                IEnumerable<GrupoModelObtener> lst =
-                    (from d in db.Grupo
-                     where d.Nombre_Grupo.Contains(palabra)
-                     select new GrupoModelObtener
+                IEnumerable<HorarioDocenteMostrarModel> lst =
+                    (from d in db.HorarioDocente
+                     where d.Docente.Nombre_Docente.Contains(palabra)
+                     select new HorarioDocenteMostrarModel
                      {
-                         Id_Grupo = (int)d.Id_Grupo,
-                         Nombre_Grupo = d.Nombre_Grupo,
-                         Cuatrimestre = d.Cuatrimestre,
-                         NombreCarrera = d.Carrera.Nombre_Carrera
+                         Id = (int)d.Id,
+                         Ciclo = d.Ciclo,
+                         Nombre_Docente = d.Docente.Nombre_Docente,
+                         Nombre_Materia = d.Materia.Nombre_Materia,
+                         Dia = d.Dia,
+                         Hora_Inicio = d.Hora_Inicio,
+                         Hora_Fin = d.Hora_Fin
+                     }).ToList();
+                return lst;
+            }
+        }
+
+        public IEnumerable<HorarioDocenteModel> comparar()
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                IEnumerable<HorarioDocenteModel> lst =
+                    (from d in db.HorarioDocente 
+                     select new HorarioDocenteModel
+                     {
+                         Id_HorarioDocente = (int)d.Id_HorarioDocente,
+                         Id_Docente = (int)d.Id_Docente,
+                         Id_Materia = (int)d.Id_Materia,
+                         Ciclo = d.Ciclo,
+                         Dia = d.Dia,
+                         Hora_Inicio = d.Hora_Inicio,
+                         Hora_Fin = d.Hora_Fin,
+                         Id = (int)d.Id
                      }).ToList();
                 return lst;
             }

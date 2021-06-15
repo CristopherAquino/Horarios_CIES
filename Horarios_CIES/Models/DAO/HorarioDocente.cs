@@ -14,12 +14,6 @@ namespace Horarios_CIES.Models.DAO
     
     public partial class HorarioDocente
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HorarioDocente()
-        {
-            this.HorarioGrupo = new HashSet<HorarioGrupo>();
-        }
-    
         public long Id_HorarioDocente { get; set; }
         public long Id_Materia { get; set; }
         public long Id_Docente { get; set; }
@@ -27,10 +21,9 @@ namespace Horarios_CIES.Models.DAO
         public string Dia { get; set; }
         public string Hora_Inicio { get; set; }
         public string Hora_Fin { get; set; }
+        public long Id { get; set; }
     
         public virtual Docente Docente { get; set; }
         public virtual Materia Materia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HorarioGrupo> HorarioGrupo { get; set; }
     }
 }

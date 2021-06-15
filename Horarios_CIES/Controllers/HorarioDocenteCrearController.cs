@@ -6,6 +6,7 @@ using Horarios_CIES.Views;
 using Horarios_CIES.Models.DTO;
 using Horarios_CIES.Models.DAO;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace Horarios_CIES.Controllers
 {
@@ -41,7 +42,7 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public void añadir(int idM, int idD, string ciclo, string dia, string horai, string horaf)
+        public void añadir(int idM, int idD, string ciclo, string dia, string horai, string horaf, int id)
         {
             using (DBContextString db = new DBContextString())
             {
@@ -52,8 +53,49 @@ namespace Horarios_CIES.Controllers
                 horario.Dia = dia;
                 horario.Hora_Inicio = horai;
                 horario.Hora_Fin = horaf;
+                horario.Id = id;
                 db.HorarioDocente.Add(horario);
                 db.SaveChanges();
+            }
+        }
+
+        public bool IsIENumerableLleno(IEnumerable<HorarioDocenteModel> ultimo)
+        {
+            bool isFull = false;
+            foreach (HorarioDocenteModel item in ultimo)
+            {
+                isFull = true;
+                break;
+            }
+            return isFull;
+        }
+
+        public IEnumerable<HorarioDocenteModel> ultimo()
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                IEnumerable <HorarioDocenteModel> lst =
+                    (from d in db.HorarioDocente
+                     select new HorarioDocenteModel
+                     {
+                         Id = (int)d.Id
+                     }).ToList();
+                return lst;
+            }
+        }
+
+        public int identificador()
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                var a = IsIENumerableLleno(ultimo());
+                if(a != false)
+                {
+                    int id = (int)db.HorarioDocente.Max(x => x.Id);
+                    return id;
+                }
+                int k = 0;
+                return k;
             }
         }
     }

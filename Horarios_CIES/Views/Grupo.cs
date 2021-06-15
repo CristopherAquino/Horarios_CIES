@@ -73,11 +73,29 @@ namespace Horarios_CIES.Views
             {
                 Obtener();
                 ObtenerCombo();
+                ValidacionRegistros();
                 txtNombreGrupo.Focus();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR: " + ex.Message);
+            }
+        }
+
+        private void ValidacionRegistros()
+        {
+            if (ComboCarrera.Text.Equals(""))
+            {
+                MessageBox.Show("REGISTRE CARRERAS");
+                btnAgregar.Enabled = false;
+                btnModificar.Enabled = false;
+                btnEliminar.Enabled = false;
+            }
+            else
+            {
+                btnAgregar.Enabled = true;
+                btnModificar.Enabled = true;
+                btnEliminar.Enabled = true;
             }
         }
 

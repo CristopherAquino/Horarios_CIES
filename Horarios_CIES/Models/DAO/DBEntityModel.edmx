@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBEntityModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\cris4\OneDrive\Escritorio\Horarios_CIES\Horarios_CIES\DBContext.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="mainModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\cris4\OneDrive\Escritorio\Horarios_CIES\Horarios_CIES\DBContext.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Carrera">
           <Key>
             <PropertyRef Name="IdCarrera" />
@@ -30,7 +30,7 @@
           <Property Name="Id_Grupo" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre_Grupo" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="Cuatrimestre" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="Id_Carrera" Type="integer" />
+          <Property Name="Id_Carrera" Type="integer" Nullable="false" />
         </EntityType>
         <EntityType Name="HorarioDocente">
           <Key>
@@ -43,6 +43,7 @@
           <Property Name="Dia" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="Hora_Inicio" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="Hora_Fin" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Id" Type="integer" Nullable="false" />
         </EntityType>
         <EntityType Name="HorarioGrupo">
           <Key>
@@ -50,7 +51,8 @@
           </Key>
           <Property Name="Id_HorarioGrupo" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_Grupo" Type="integer" Nullable="false" />
-          <Property Name="Id_HorarioDocente" Type="integer" Nullable="false" />
+          <Property Name="Id_Materia" Type="integer" Nullable="false" />
+          <Property Name="Id" Type="integer" Nullable="false" />
         </EntityType>
         <EntityType Name="Materia">
           <Key>
@@ -59,10 +61,10 @@
           <Property Name="Id_Materia" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Codigo_Materia" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="Nombre_Materia" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="Id_Grupo" Type="integer" />
+          <Property Name="Id_Grupo" Type="integer" Nullable="false" />
         </EntityType>
         <Association Name="FK_Grupo_0_0">
-          <End Role="Carrera" Type="Self.Carrera" Multiplicity="0..1" />
+          <End Role="Carrera" Type="Self.Carrera" Multiplicity="1" />
           <End Role="Grupo" Type="Self.Grupo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Carrera">
@@ -98,6 +100,18 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HorarioGrupo_0_0">
+          <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
+          <End Role="HorarioGrupo" Type="Self.HorarioGrupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materia">
+              <PropertyRef Name="Id_Materia" />
+            </Principal>
+            <Dependent Role="HorarioGrupo">
+              <PropertyRef Name="Id_Materia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorarioGrupo_1_0">
           <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
           <End Role="HorarioGrupo" Type="Self.HorarioGrupo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -109,20 +123,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HorarioGrupo_1_0">
-          <End Role="HorarioDocente" Type="Self.HorarioDocente" Multiplicity="1" />
-          <End Role="HorarioGrupo" Type="Self.HorarioGrupo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HorarioDocente">
-              <PropertyRef Name="Id_HorarioDocente" />
-            </Principal>
-            <Dependent Role="HorarioGrupo">
-              <PropertyRef Name="Id_HorarioDocente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Materia_0_0">
-          <End Role="Grupo" Type="Self.Grupo" Multiplicity="0..1" />
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
           <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Grupo">
@@ -133,7 +135,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBEntityModelStoreContainer">
+        <EntityContainer Name="mainModelStoreContainer">
           <EntitySet Name="Carrera" EntityType="Self.Carrera" store:Type="Tables" />
           <EntitySet Name="Docente" EntityType="Self.Docente" store:Type="Tables" />
           <EntitySet Name="Grupo" EntityType="Self.Grupo" store:Type="Tables" />
@@ -153,11 +155,11 @@
             <End Role="HorarioDocente" EntitySet="HorarioDocente" />
           </AssociationSet>
           <AssociationSet Name="FK_HorarioGrupo_0_0" Association="Self.FK_HorarioGrupo_0_0">
-            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="Materia" EntitySet="Materia" />
             <End Role="HorarioGrupo" EntitySet="HorarioGrupo" />
           </AssociationSet>
           <AssociationSet Name="FK_HorarioGrupo_1_0" Association="Self.FK_HorarioGrupo_1_0">
-            <End Role="HorarioDocente" EntitySet="HorarioDocente" />
+            <End Role="Grupo" EntitySet="Grupo" />
             <End Role="HorarioGrupo" EntitySet="HorarioGrupo" />
           </AssociationSet>
           <AssociationSet Name="FK_Materia_0_0" Association="Self.FK_Materia_0_0">
@@ -169,7 +171,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DBEntityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Carrera">
           <Key>
             <PropertyRef Name="IdCarrera" />
@@ -197,9 +199,9 @@
           <Property Name="Id_Grupo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre_Grupo" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cuatrimestre" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Id_Carrera" Type="Int64" />
+          <Property Name="Id_Carrera" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Carrera" Relationship="Self.FK_Grupo_0_0" FromRole="Grupo" ToRole="Carrera" />
-          <NavigationProperty Name="HorarioGrupo" Relationship="Self.FK_HorarioGrupo_0_0" FromRole="Grupo" ToRole="HorarioGrupo" />
+          <NavigationProperty Name="HorarioGrupo" Relationship="Self.FK_HorarioGrupo_1_0" FromRole="Grupo" ToRole="HorarioGrupo" />
           <NavigationProperty Name="Materia" Relationship="Self.FK_Materia_0_0" FromRole="Grupo" ToRole="Materia" />
         </EntityType>
         <EntityType Name="HorarioDocente">
@@ -213,9 +215,9 @@
           <Property Name="Dia" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Hora_Inicio" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Hora_Fin" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Docente" Relationship="Self.FK_HorarioDocente_0_0" FromRole="HorarioDocente" ToRole="Docente" />
           <NavigationProperty Name="Materia" Relationship="Self.FK_HorarioDocente_1_0" FromRole="HorarioDocente" ToRole="Materia" />
-          <NavigationProperty Name="HorarioGrupo" Relationship="Self.FK_HorarioGrupo_1_0" FromRole="HorarioDocente" ToRole="HorarioGrupo" />
         </EntityType>
         <EntityType Name="HorarioGrupo">
           <Key>
@@ -223,9 +225,10 @@
           </Key>
           <Property Name="Id_HorarioGrupo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_Grupo" Type="Int64" Nullable="false" />
-          <Property Name="Id_HorarioDocente" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Grupo" Relationship="Self.FK_HorarioGrupo_0_0" FromRole="HorarioGrupo" ToRole="Grupo" />
-          <NavigationProperty Name="HorarioDocente" Relationship="Self.FK_HorarioGrupo_1_0" FromRole="HorarioGrupo" ToRole="HorarioDocente" />
+          <Property Name="Id_Materia" Type="Int64" Nullable="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Grupo" Relationship="Self.FK_HorarioGrupo_1_0" FromRole="HorarioGrupo" ToRole="Grupo" />
+          <NavigationProperty Name="Materia" Relationship="Self.FK_HorarioGrupo_0_0" FromRole="HorarioGrupo" ToRole="Materia" />
         </EntityType>
         <EntityType Name="Materia">
           <Key>
@@ -234,12 +237,13 @@
           <Property Name="Id_Materia" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Codigo_Materia" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nombre_Materia" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Id_Grupo" Type="Int64" />
+          <Property Name="Id_Grupo" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Grupo" Relationship="Self.FK_Materia_0_0" FromRole="Materia" ToRole="Grupo" />
           <NavigationProperty Name="HorarioDocente" Relationship="Self.FK_HorarioDocente_1_0" FromRole="Materia" ToRole="HorarioDocente" />
+          <NavigationProperty Name="HorarioGrupo" Relationship="Self.FK_HorarioGrupo_0_0" FromRole="Materia" ToRole="HorarioGrupo" />
         </EntityType>
         <Association Name="FK_Grupo_0_0">
-          <End Role="Carrera" Type="Self.Carrera" Multiplicity="0..1" />
+          <End Role="Carrera" Type="Self.Carrera" Multiplicity="1" />
           <End Role="Grupo" Type="Self.Grupo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Carrera">
@@ -262,7 +266,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HorarioGrupo_0_0">
+        <Association Name="FK_HorarioGrupo_1_0">
           <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
           <End Role="HorarioGrupo" Type="Self.HorarioGrupo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -275,7 +279,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Materia_0_0">
-          <End Role="Grupo" Type="Self.Grupo" Multiplicity="0..1" />
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
           <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Grupo">
@@ -298,15 +302,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HorarioGrupo_1_0">
-          <End Role="HorarioDocente" Type="Self.HorarioDocente" Multiplicity="1" />
+        <Association Name="FK_HorarioGrupo_0_0">
+          <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
           <End Role="HorarioGrupo" Type="Self.HorarioGrupo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="HorarioDocente">
-              <PropertyRef Name="Id_HorarioDocente" />
+            <Principal Role="Materia">
+              <PropertyRef Name="Id_Materia" />
             </Principal>
             <Dependent Role="HorarioGrupo">
-              <PropertyRef Name="Id_HorarioDocente" />
+              <PropertyRef Name="Id_Materia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -325,7 +329,7 @@
             <End Role="Docente" EntitySet="Docente" />
             <End Role="HorarioDocente" EntitySet="HorarioDocente" />
           </AssociationSet>
-          <AssociationSet Name="FK_HorarioGrupo_0_0" Association="Self.FK_HorarioGrupo_0_0">
+          <AssociationSet Name="FK_HorarioGrupo_1_0" Association="Self.FK_HorarioGrupo_1_0">
             <End Role="Grupo" EntitySet="Grupo" />
             <End Role="HorarioGrupo" EntitySet="HorarioGrupo" />
           </AssociationSet>
@@ -337,8 +341,8 @@
             <End Role="Materia" EntitySet="Materia" />
             <End Role="HorarioDocente" EntitySet="HorarioDocente" />
           </AssociationSet>
-          <AssociationSet Name="FK_HorarioGrupo_1_0" Association="Self.FK_HorarioGrupo_1_0">
-            <End Role="HorarioDocente" EntitySet="HorarioDocente" />
+          <AssociationSet Name="FK_HorarioGrupo_0_0" Association="Self.FK_HorarioGrupo_0_0">
+            <End Role="Materia" EntitySet="Materia" />
             <End Role="HorarioGrupo" EntitySet="HorarioGrupo" />
           </AssociationSet>
         </EntityContainer>
@@ -347,9 +351,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBEntityModelStoreContainer" CdmEntityContainer="DBContextString">
+        <EntityContainerMapping StorageEntityContainer="mainModelStoreContainer" CdmEntityContainer="DBContextString">
           <EntitySetMapping Name="Carrera">
-            <EntityTypeMapping TypeName="DBEntityModel.Carrera">
+            <EntityTypeMapping TypeName="mainModel.Carrera">
               <MappingFragment StoreEntitySet="Carrera">
                 <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
                 <ScalarProperty Name="Nombre_Carrera" ColumnName="Nombre_Carrera" />
@@ -357,7 +361,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Docente">
-            <EntityTypeMapping TypeName="DBEntityModel.Docente">
+            <EntityTypeMapping TypeName="mainModel.Docente">
               <MappingFragment StoreEntitySet="Docente">
                 <ScalarProperty Name="Id_Docente" ColumnName="Id_Docente" />
                 <ScalarProperty Name="Nombre_Docente" ColumnName="Nombre_Docente" />
@@ -369,7 +373,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Grupo">
-            <EntityTypeMapping TypeName="DBEntityModel.Grupo">
+            <EntityTypeMapping TypeName="mainModel.Grupo">
               <MappingFragment StoreEntitySet="Grupo">
                 <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
                 <ScalarProperty Name="Nombre_Grupo" ColumnName="Nombre_Grupo" />
@@ -379,7 +383,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HorarioDocente">
-            <EntityTypeMapping TypeName="DBEntityModel.HorarioDocente">
+            <EntityTypeMapping TypeName="mainModel.HorarioDocente">
               <MappingFragment StoreEntitySet="HorarioDocente">
                 <ScalarProperty Name="Id_HorarioDocente" ColumnName="Id_HorarioDocente" />
                 <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
@@ -388,20 +392,22 @@
                 <ScalarProperty Name="Dia" ColumnName="Dia" />
                 <ScalarProperty Name="Hora_Inicio" ColumnName="Hora_Inicio" />
                 <ScalarProperty Name="Hora_Fin" ColumnName="Hora_Fin" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HorarioGrupo">
-            <EntityTypeMapping TypeName="DBEntityModel.HorarioGrupo">
+            <EntityTypeMapping TypeName="mainModel.HorarioGrupo">
               <MappingFragment StoreEntitySet="HorarioGrupo">
                 <ScalarProperty Name="Id_HorarioGrupo" ColumnName="Id_HorarioGrupo" />
                 <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
-                <ScalarProperty Name="Id_HorarioDocente" ColumnName="Id_HorarioDocente" />
+                <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Materia">
-            <EntityTypeMapping TypeName="DBEntityModel.Materia">
+            <EntityTypeMapping TypeName="mainModel.Materia">
               <MappingFragment StoreEntitySet="Materia">
                 <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
                 <ScalarProperty Name="Codigo_Materia" ColumnName="Codigo_Materia" />
