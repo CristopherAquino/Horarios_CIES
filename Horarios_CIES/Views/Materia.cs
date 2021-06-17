@@ -22,8 +22,6 @@ namespace Horarios_CIES.Views
             try
             {
                 Obtener();
-                ObtenerCombo();
-                ValidacionRegistros();
                 txtCodigoMateria.Focus();
             }
             catch (Exception ex)
@@ -96,38 +94,6 @@ namespace Horarios_CIES.Views
             }
         }
 
-        private void ValidacionRegistros()
-        {
-            if (ComboGrupo.Text.Equals(""))
-            {
-                MessageBox.Show("REGISTRE GRUPO");
-                btnAgregar.Enabled = false;
-                btnModificar.Enabled = false;
-                btnEliminar.Enabled = false;
-            }
-            else
-            {
-                btnAgregar.Enabled = true;
-                btnModificar.Enabled = true;
-                btnEliminar.Enabled = true;
-            }
-        }
-
-        private void ObtenerCombo()
-        {
-            try
-            {
-                ComboGrupo.DataSource = materia.combo();
-                ComboGrupo.ValueMember = "Id_Grupo";
-                ComboGrupo.DisplayMember = "Nombre_Grupo";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ERROR: " + ex.Message);
-            }
-
-        }
-
         public int? getid()
         {
             try
@@ -149,8 +115,7 @@ namespace Horarios_CIES.Views
                     !txtCodigoMateria.Text.Equals(""))
                 {
                     materia.añadir(txtNombreMateria.Text,
-                        txtCodigoMateria.Text,
-                        (int)ComboGrupo.SelectedValue);
+                        txtCodigoMateria.Text);
                     txtNombreMateria.Clear();
                     txtCodigoMateria.Clear();
                     Obtener();
@@ -178,8 +143,7 @@ namespace Horarios_CIES.Views
                     {
                         materia.Modificar((int)id,
                             txtNombreMateria.Text,
-                            txtCodigoMateria.Text,
-                            (int)ComboGrupo.SelectedValue);
+                            txtCodigoMateria.Text);
                         txtNombreMateria.Clear();
                         txtCodigoMateria.Clear();
                         Obtener();
@@ -236,8 +200,6 @@ namespace Horarios_CIES.Views
             {
                 txtNombreMateria.Text = TablaMaterias.CurrentRow.Cells[2].Value.ToString();
                 txtCodigoMateria.Text = TablaMaterias.CurrentRow.Cells[1].Value.ToString();
-                ComboGrupo.Text = TablaMaterias.CurrentRow.Cells[3].Value.ToString();
-
             }
             catch (Exception x)
             {

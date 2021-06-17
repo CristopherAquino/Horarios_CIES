@@ -62,6 +62,7 @@ namespace Horarios_CIES.Views
             }
             else { id = 1; }
         }
+
         private void ObtenerCombos()
         {
             try
@@ -105,6 +106,7 @@ namespace Horarios_CIES.Views
                 {
                     click = click + 1;
                     Datos();
+                    TablaHorarioDocenteADD.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells);
                     ComboDocente.Enabled = false;
                 }
             }

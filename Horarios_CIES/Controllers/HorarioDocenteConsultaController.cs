@@ -19,6 +19,7 @@ namespace Horarios_CIES.Controllers
                     (from d in db.HorarioDocente
                      select new HorarioDocenteMostrarModel
                      {
+                         Id_HorarioDocente = (int)d.Id_HorarioDocente,
                          Id = (int)d.Id,
                          Ciclo = d.Ciclo,
                          Nombre_Docente = d.Docente.Nombre_Docente,
@@ -65,7 +66,7 @@ namespace Horarios_CIES.Controllers
             using (DBContextString db = new DBContextString())
             {
                 var ehorario = (from d in db.HorarioDocente
-                              where d.Id_Docente == id
+                              where d.Id_HorarioDocente == id
                               select d).FirstOrDefault();
 
                 db.HorarioDocente.Remove(ehorario);
@@ -73,14 +74,16 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public void Modificar(int idM, int idD, string ciclo, string dia, string horai, string horaf, int id)
+        public void Modificar(int id, int idM, string ciclo, string dia, string horai, string horaf)
         {
             using (DBContextString db = new DBContextString())
             {
-                var update = db.HorarioDocente.FindFind(id);
-                update.Nombre_Grupo = nombre;
-                update.Cuatrimestre = cuatrimestre;
-                update.Id_Carrera = carrera;
+                var update = db.HorarioDocente.Find(id);
+                update.Id_Materia = idM;
+                update.Ciclo = ciclo;
+                update.Dia = dia;
+                update.Hora_Inicio = horai;
+                update.Hora_Fin = horaf;
                 db.Entry(update).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
@@ -95,6 +98,7 @@ namespace Horarios_CIES.Controllers
                      where d.Docente.Nombre_Docente.Contains(palabra)
                      select new HorarioDocenteMostrarModel
                      {
+                         Id_HorarioDocente = (int)d.Id_HorarioDocente,
                          Id = (int)d.Id,
                          Ciclo = d.Ciclo,
                          Nombre_Docente = d.Docente.Nombre_Docente,

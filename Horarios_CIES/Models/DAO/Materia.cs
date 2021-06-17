@@ -24,9 +24,7 @@ namespace Horarios_CIES.Models.DAO
         public long Id_Materia { get; set; }
         public string Codigo_Materia { get; set; }
         public string Nombre_Materia { get; set; }
-        public long Id_Grupo { get; set; }
     
-        public virtual Grupo Grupo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HorarioDocente> HorarioDocente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

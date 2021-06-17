@@ -27,7 +27,10 @@ namespace Horarios_CIES.Models.DTO
 
     public class HorarioDocenteMostrarModel
     {
-        [DisplayName("ID")]
+        [DisplayName(" ")]
+        public int Id_HorarioDocente { get; set; }
+
+        [DisplayName("HORARIO")]
         public int Id { get; set; }
 
         [DisplayName("CICLO")]

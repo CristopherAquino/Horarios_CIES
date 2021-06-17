@@ -18,7 +18,6 @@ namespace Horarios_CIES.Models.DAO
         public Grupo()
         {
             this.HorarioGrupo = new HashSet<HorarioGrupo>();
-            this.Materia = new HashSet<Materia>();
         }
     
         public long Id_Grupo { get; set; }
@@ -29,7 +28,5 @@ namespace Horarios_CIES.Models.DAO
         public virtual Carrera Carrera { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HorarioGrupo> HorarioGrupo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Materia> Materia { get; set; }
     }
 }

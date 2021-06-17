@@ -21,21 +21,19 @@ namespace Horarios_CIES.Controllers
                      {
                          Id_Materia = (int)d.Id_Materia,
                          Codigo_Materia = d.Codigo_Materia,
-                         Nombre_Materia = d.Nombre_Materia,
-                         NombreGrupo = d.Grupo.Nombre_Grupo
+                         Nombre_Materia = d.Nombre_Materia
                      }).ToList();
                 return lst;
             }
         }
 
-        public void añadir(string nombre, string codigo, int grupo)
+        public void añadir(string nombre, string codigo)
         {
             using (DBContextString db = new DBContextString())
             {
                 Models.DAO.Materia omateria = new Models.DAO.Materia();
                 omateria.Codigo_Materia = codigo;
                 omateria.Nombre_Materia = nombre;
-                omateria.Id_Grupo = grupo;
                 db.Materia.Add(omateria);
                 db.SaveChanges();
             }
@@ -54,14 +52,13 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public void Modificar(int id, string nombre, string codigo, int grupo)
+        public void Modificar(int id, string nombre, string codigo)
         {
             using (DBContextString db = new DBContextString())
             {
                 var update = db.Materia.Find(id);
                 update.Nombre_Materia = nombre;
                 update.Codigo_Materia = codigo;
-                update.Id_Grupo = grupo;
                 db.Entry(update).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
@@ -79,22 +76,6 @@ namespace Horarios_CIES.Controllers
                          Id_Materia = (int)d.Id_Materia,
                          Codigo_Materia = d.Codigo_Materia,
                          Nombre_Materia = d.Nombre_Materia,
-                         NombreGrupo = d.Grupo.Nombre_Grupo
-                     }).ToList();
-                return lst;
-            }
-        }
-
-        public IEnumerable<GrupoModel> combo()
-        {
-            using (DBContextString db = new DBContextString())
-            {
-                IEnumerable<GrupoModel> lst =
-                    (from d in db.Grupo
-                     select new GrupoModel
-                     {
-                         Id_Grupo = (int)d.Id_Grupo,
-                         Nombre_Grupo = d.Nombre_Grupo
                      }).ToList();
                 return lst;
             }

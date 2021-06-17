@@ -14,8 +14,6 @@ namespace Horarios_CIES.Models.DTO
         public string Codigo_Materia { get; set; }
 
         public string Nombre_Materia { get; set; }
-
-        public int Id_Grupo { get; set; }
     }
 
     public class MateriaModelObtener
@@ -29,8 +27,5 @@ namespace Horarios_CIES.Models.DTO
 
         [DisplayName("NOMBRE DE MATERIA")]
         public string Nombre_Materia { get; set; }
-
-        [DisplayName("NOMBRE DE GRUPO")]
-        public string NombreGrupo { get; set; }
     }
 }

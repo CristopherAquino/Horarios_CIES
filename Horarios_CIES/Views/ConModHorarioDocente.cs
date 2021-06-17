@@ -16,6 +16,7 @@ namespace Horarios_CIES.Views
             InitializeComponent();
         }
 
+        int numerohorario;
         int indiceInicio;
         string horainicio;
         int indiceFin;
@@ -59,6 +60,7 @@ namespace Horarios_CIES.Views
                 txtBuscar.ForeColor = Color.FromArgb(113, 113, 113);
             }
         }
+        
         private void Consultar(string s)
         {
             try
@@ -176,6 +178,66 @@ namespace Horarios_CIES.Views
         {
             indiceDocente = ComboDocente.SelectedIndex;
             docente = ComboDocente.Items[indiceDocente].ToString();
+        }
+
+        private void TablaHorarioDocenteCon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                numerohorario = int.Parse(TablaHorarioDocenteCon.CurrentRow.Cells[1].Value.ToString());
+                txtCiclo.Text = TablaHorarioDocenteCon.CurrentRow.Cells[2].Value.ToString();
+                ComboDocente.Text = TablaHorarioDocenteCon.CurrentRow.Cells[3].Value.ToString();
+                ComboMateria.Text = TablaHorarioDocenteCon.CurrentRow.Cells[4].Value.ToString();
+                ComboDia.Text = TablaHorarioDocenteCon.CurrentRow.Cells[5].Value.ToString();
+                ComboInicio.Text = TablaHorarioDocenteCon.CurrentRow.Cells[6].Value.ToString();
+                ComboFin.Text = TablaHorarioDocenteCon.CurrentRow.Cells[7].Value.ToString();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("ERROR: " + x.Message);
+            }
+        }
+
+        private void validar()
+        {
+            try
+            {
+                int idtabla=0;
+                string diatabla = "";
+                string horainiciotabla = "";
+                foreach (DataGridViewRow r in TablaHorarioDocenteCon.Rows)
+                {
+                    idtabla = int.Parse(r.Cells[1].Value.ToString());
+                }
+                if (idtabla != 0)
+                {
+                    if (numerohorario == idtabla)
+                    {
+                        foreach (DataGridViewRow row in TablaHorarioDocenteCon.Rows)
+                        {
+                            diatabla = row.Cells[5].Value.ToString();
+                        }
+                    }
+                }
+                foreach (DataGridViewRow row1 in TablaHorarioDocenteCon.Rows)
+                {
+                    horainiciotabla = row1.Cells[6].Value.ToString();
+                }
+                if (ComboDia.Text.Equals(diatabla))
+                {
+                    if (ComboInicio.Text.Equals(horainicio))
+                    {
+                        MessageBox.Show("HORA DE INICIO OCUPADA");
+                    }
+                }
+            }
+            catch (Exception x)
+            { MessageBox.Show(x.Message); }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            validar();
         }
     }
 }

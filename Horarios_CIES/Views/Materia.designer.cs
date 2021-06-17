@@ -40,8 +40,6 @@ namespace Horarios_CIES.Views
             this.btnAgregar = new AltoControls.AltoButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombreMateria = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ComboGrupo = new System.Windows.Forms.ComboBox();
             this.TablaMaterias = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.TablaMaterias)).BeginInit();
             this.SuspendLayout();
@@ -173,31 +171,6 @@ namespace Horarios_CIES.Views
             this.txtNombreMateria.Size = new System.Drawing.Size(245, 25);
             this.txtNombreMateria.TabIndex = 15;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Nirmala UI", 12F);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
-            this.label3.Location = new System.Drawing.Point(504, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 21);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "GRUPO";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ComboGrupo
-            // 
-            this.ComboGrupo.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ComboGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboGrupo.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ComboGrupo.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
-            this.ComboGrupo.FormattingEnabled = true;
-            this.ComboGrupo.Location = new System.Drawing.Point(504, 79);
-            this.ComboGrupo.Name = "ComboGrupo";
-            this.ComboGrupo.Size = new System.Drawing.Size(245, 25);
-            this.ComboGrupo.TabIndex = 19;
-            // 
             // TablaMaterias
             // 
             this.TablaMaterias.AllowUserToAddRows = false;
@@ -254,8 +227,6 @@ namespace Horarios_CIES.Views
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1097, 621);
             this.Controls.Add(this.TablaMaterias);
-            this.Controls.Add(this.ComboGrupo);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombreMateria);
             this.Controls.Add(this.txtBuscar);
@@ -284,8 +255,6 @@ namespace Horarios_CIES.Views
         private AltoControls.AltoButton btnAgregar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombreMateria;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox ComboGrupo;
         private System.Windows.Forms.DataGridView TablaMaterias;
     }
 }

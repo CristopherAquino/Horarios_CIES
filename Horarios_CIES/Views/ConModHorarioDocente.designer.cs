@@ -29,9 +29,9 @@ namespace Horarios_CIES.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnEliminar = new AltoControls.AltoButton();
             this.btnModificar = new AltoControls.AltoButton();
@@ -105,6 +105,7 @@ namespace Horarios_CIES.Views
             this.btnModificar.TabIndex = 44;
             this.btnModificar.Text = "MODIFICAR";
             this.btnModificar.Transparency = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // TablaHorarioDocenteCon
             // 
@@ -116,49 +117,49 @@ namespace Horarios_CIES.Views
             this.TablaHorarioDocenteCon.BackgroundColor = System.Drawing.Color.White;
             this.TablaHorarioDocenteCon.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TablaHorarioDocenteCon.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Nirmala UI", 11F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaHorarioDocenteCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Nirmala UI", 11F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaHorarioDocenteCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.TablaHorarioDocenteCon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Nirmala UI", 9F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TablaHorarioDocenteCon.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Nirmala UI", 9F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TablaHorarioDocenteCon.DefaultCellStyle = dataGridViewCellStyle11;
             this.TablaHorarioDocenteCon.EnableHeadersVisualStyles = false;
             this.TablaHorarioDocenteCon.GridColor = System.Drawing.Color.Navy;
             this.TablaHorarioDocenteCon.Location = new System.Drawing.Point(94, 294);
             this.TablaHorarioDocenteCon.MultiSelect = false;
             this.TablaHorarioDocenteCon.Name = "TablaHorarioDocenteCon";
             this.TablaHorarioDocenteCon.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Nirmala UI", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaHorarioDocenteCon.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Nirmala UI", 9F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaHorarioDocenteCon.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.TablaHorarioDocenteCon.RowHeadersVisible = false;
             this.TablaHorarioDocenteCon.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.TablaHorarioDocenteCon.RowTemplate.Height = 25;
             this.TablaHorarioDocenteCon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TablaHorarioDocenteCon.Size = new System.Drawing.Size(824, 265);
+            this.TablaHorarioDocenteCon.Size = new System.Drawing.Size(911, 265);
             this.TablaHorarioDocenteCon.TabIndex = 47;
+            this.TablaHorarioDocenteCon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaHorarioDocenteCon_CellClick);
             // 
             // ComboDia
             // 
             this.ComboDia.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ComboDia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboDia.Enabled = false;
             this.ComboDia.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ComboDia.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
             this.ComboDia.FormattingEnabled = true;
@@ -193,7 +194,6 @@ namespace Horarios_CIES.Views
             // 
             this.ComboFin.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ComboFin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboFin.Enabled = false;
             this.ComboFin.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ComboFin.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
             this.ComboFin.FormattingEnabled = true;
@@ -236,7 +236,6 @@ namespace Horarios_CIES.Views
             // 
             this.ComboInicio.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ComboInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboInicio.Enabled = false;
             this.ComboInicio.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ComboInicio.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
             this.ComboInicio.FormattingEnabled = true;
@@ -292,7 +291,6 @@ namespace Horarios_CIES.Views
             // 
             this.txtCiclo.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtCiclo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCiclo.Enabled = false;
             this.txtCiclo.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
             this.txtCiclo.Location = new System.Drawing.Point(94, 205);
             this.txtCiclo.MaxLength = 60;
@@ -331,7 +329,6 @@ namespace Horarios_CIES.Views
             // 
             this.ComboMateria.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ComboMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboMateria.Enabled = false;
             this.ComboMateria.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ComboMateria.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
             this.ComboMateria.FormattingEnabled = true;
