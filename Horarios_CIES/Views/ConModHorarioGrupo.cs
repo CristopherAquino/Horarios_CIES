@@ -13,14 +13,11 @@ namespace Horarios_CIES.Views
         public ConModHorarioGrupo()
         {
             InitializeComponent();
-            try
-            {
-                TablaHorarioGrupoCon.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            }
-            catch (Exception a)
-            {
-                MessageBox.Show("Sin conexión a datos");
-            }
+        }
+
+        private void ConModHorarioGrupo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

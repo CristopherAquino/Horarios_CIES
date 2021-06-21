@@ -21,7 +21,7 @@ namespace Horarios_CIES.Controllers
                      {
                          Id_HorarioDocente = (int)d.Id_HorarioDocente,
                          Id = (int)d.Id,
-                         Ciclo = d.Ciclo,
+                         Ciclo = d.Ciclos.Ciclo,
                          Nombre_Docente = d.Docente.Nombre_Docente,
                          Nombre_Materia = d.Materia.Nombre_Materia,
                          Dia = d.Dia,
@@ -61,6 +61,21 @@ namespace Horarios_CIES.Controllers
             }
         }
 
+        public IEnumerable<CicloModel> comboCiclo()
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                IEnumerable<CicloModel> lst =
+                    (from d in db.Ciclos
+                     select new CicloModel
+                     {
+                         Id_Ciclo = (int)d.Id_Ciclo,
+                         Ciclo = d.Ciclo
+                     }).ToList();
+                return lst;
+            }
+        }
+
         public void Eliminar(int id)
         {
             using (DBContextString db = new DBContextString())
@@ -74,13 +89,12 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public void Modificar(int id, int idM, string ciclo, string dia, string horai, string horaf)
+        public void Modificar(int id, int idM, string dia, string horai, string horaf)
         {
             using (DBContextString db = new DBContextString())
             {
                 var update = db.HorarioDocente.Find(id);
                 update.Id_Materia = idM;
-                update.Ciclo = ciclo;
                 update.Dia = dia;
                 update.Hora_Inicio = horai;
                 update.Hora_Fin = horaf;
@@ -100,7 +114,7 @@ namespace Horarios_CIES.Controllers
                      {
                          Id_HorarioDocente = (int)d.Id_HorarioDocente,
                          Id = (int)d.Id,
-                         Ciclo = d.Ciclo,
+                         Ciclo = d.Ciclos.Ciclo,
                          Nombre_Docente = d.Docente.Nombre_Docente,
                          Nombre_Materia = d.Materia.Nombre_Materia,
                          Dia = d.Dia,
@@ -111,22 +125,41 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public IEnumerable<HorarioDocenteModel> comparar()
+        public IEnumerable<HorarioDocenteImprimirModel> compararidentificador(int id)
         {
             using (DBContextString db = new DBContextString())
             {
-                IEnumerable<HorarioDocenteModel> lst =
-                    (from d in db.HorarioDocente 
-                     select new HorarioDocenteModel
+                IEnumerable<HorarioDocenteImprimirModel> lst =
+                    (from d in db.HorarioDocente
+                     where d.Id == id
+                     select new HorarioDocenteImprimirModel
                      {
-                         Id_HorarioDocente = (int)d.Id_HorarioDocente,
-                         Id_Docente = (int)d.Id_Docente,
-                         Id_Materia = (int)d.Id_Materia,
-                         Ciclo = d.Ciclo,
+                         Id = (int)d.Id,
+                         Ciclo = d.Ciclos.Ciclo,
+                         Nombre_Docente = d.Docente.Nombre_Docente,
+                         Nombre_Materia = d.Materia.Nombre_Materia,
                          Dia = d.Dia,
                          Hora_Inicio = d.Hora_Inicio,
-                         Hora_Fin = d.Hora_Fin,
-                         Id = (int)d.Id
+                         Hora_Fin = d.Hora_Fin
+                     }).ToList();
+                return lst;
+            }
+        }
+
+        public IEnumerable<HorarioDocenteModModel> obtenermenos(int id, int numero)
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                IEnumerable<HorarioDocenteModModel> lst =
+                    (from d in db.HorarioDocente
+                     where d.Id == numero && d.Id_HorarioDocente != id
+                     select new HorarioDocenteModModel
+                     {
+                         Id = (int)d.Id,
+                         Nombre_Materia = d.Materia.Nombre_Materia,
+                         Dia = d.Dia,
+                         Hora_Inicio = d.Hora_Inicio,
+                         Hora_Fin = d.Hora_Fin
                      }).ToList();
                 return lst;
             }

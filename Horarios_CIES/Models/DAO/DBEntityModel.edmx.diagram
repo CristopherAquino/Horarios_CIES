@@ -4,18 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6380ac9ea6404695a08e7f971e62a28e" Name="Diagram1">
-        <EntityTypeShape EntityType="DBHModel.Carrera" Width="1.5" PointX="1.5" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBHModel.Docente" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBHModel.Grupo" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBHModel.HorarioDocente" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBHModel.HorarioGrupo" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBHModel.Materia" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <AssociationConnector Association="DBHModel.FK_Grupo_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="DBHModel.FK_HorarioDocente_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="DBHModel.FK_HorarioGrupo_1_0" ManuallyRouted="false" />
-        <AssociationConnector Association="DBHModel.FK_HorarioDocente_1_0" ManuallyRouted="false" />
-        <AssociationConnector Association="DBHModel.FK_HorarioGrupo_0_0" ManuallyRouted="false" />
+      <Diagram DiagramId="6c7666a2c78243788e7c9ca3b5bab97a" Name="Diagram1">
+        <EntityTypeShape EntityType="DBMainModel.Carrera" Width="1.5" PointX="1.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMainModel.Ciclos" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMainModel.Docente" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMainModel.Grupo" Width="1.5" PointX="3.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMainModel.HorarioDocente" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMainModel.HorarioGrupo" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMainModel.Materia" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="DBMainModel.FK_Grupo_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMainModel.FK_HorarioDocente_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMainModel.FK_HorarioDocente_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMainModel.FK_HorarioGrupo_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMainModel.FK_HorarioDocente_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMainModel.FK_HorarioGrupo_0_0" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

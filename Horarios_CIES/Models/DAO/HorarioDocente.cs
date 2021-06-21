@@ -17,12 +17,13 @@ namespace Horarios_CIES.Models.DAO
         public long Id_HorarioDocente { get; set; }
         public long Id_Materia { get; set; }
         public long Id_Docente { get; set; }
-        public string Ciclo { get; set; }
+        public long Id_Ciclo { get; set; }
         public string Dia { get; set; }
         public string Hora_Inicio { get; set; }
         public string Hora_Fin { get; set; }
         public long Id { get; set; }
     
+        public virtual Ciclos Ciclos { get; set; }
         public virtual Docente Docente { get; set; }
         public virtual Materia Materia { get; set; }
     }

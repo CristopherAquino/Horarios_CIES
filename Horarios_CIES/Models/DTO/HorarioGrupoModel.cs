@@ -1,49 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Horarios_CIES.Models.DTO
 {
-    class HorarioGrupoModel
+    public class HorarioGrupoModel
     {
-        int _Id_HorarioGrupo;
-        int _Id_Grupo;
-        int _Id_HorarioDocente;
+        public int Id_HorarioGrupo { get; set; }
+        public int Id_Grupo { get; set; }
+        public int Id_Materia { get; set; }
+        public int Id_Ciclo { get; set; }
+        public int Id { get; set; }
+    }
 
-        public int Id_HorarioGrupo
-        {
-            get
-            {
-                return _Id_HorarioGrupo;
-            }
-            set
-            {
-                _Id_HorarioGrupo = value;
-            }
-        }
+    public class TablaMateriaDocente
+    {
+        [DisplayName("DIA")]
+        public string Dia { get; set; }
 
-        public int Id_Grupo
-        {
-            get
-            {
-                return _Id_Grupo;
-            }
-            set
-            {
-                _Id_Grupo = value;
-            }
-        }
+        [DisplayName("HORA INICIO")]
+        public string Hora_Inicio { get; set; }
 
-        public int Id_HorarioDocente
-        {
-            get
-            {
-                return _Id_HorarioDocente;
-            }
-            set
-            {
-                _Id_HorarioDocente = value;
-            }
-        }
+        [DisplayName("HORA FIN")]
+        public string Hora_Fin { get; set; }
+    }
+    public class ComboMateriaModel
+    {
+        public int Id_Materia { get; set; }
+        public string Nombre_Materia { get; set; }
+    }
+
+    public class ComboDocenteModel
+    {
+        public int Id_Docente { get; set; }
+        public string Nombre_Docente { get; set; }
     }
 }

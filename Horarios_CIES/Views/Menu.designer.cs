@@ -31,6 +31,7 @@ namespace Horarios_CIES
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.PanelMenu = new System.Windows.Forms.Panel();
+            this.btnCiclo = new System.Windows.Forms.Button();
             this.btnHorarioGruConsulta = new System.Windows.Forms.Button();
             this.btnHorarioGruCrear = new System.Windows.Forms.Button();
             this.btnHorarioGrupo = new System.Windows.Forms.Button();
@@ -64,6 +65,7 @@ namespace Horarios_CIES
             this.PanelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.PanelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
+            this.PanelMenu.Controls.Add(this.btnCiclo);
             this.PanelMenu.Controls.Add(this.btnHorarioGruConsulta);
             this.PanelMenu.Controls.Add(this.btnHorarioGruCrear);
             this.PanelMenu.Controls.Add(this.btnHorarioGrupo);
@@ -80,6 +82,25 @@ namespace Horarios_CIES
             this.PanelMenu.Name = "PanelMenu";
             this.PanelMenu.Size = new System.Drawing.Size(206, 650);
             this.PanelMenu.TabIndex = 0;
+            // 
+            // btnCiclo
+            // 
+            this.btnCiclo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.btnCiclo.FlatAppearance.BorderSize = 0;
+            this.btnCiclo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(106)))), ((int)(((byte)(189)))));
+            this.btnCiclo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(128)))), ((int)(((byte)(215)))));
+            this.btnCiclo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCiclo.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
+            this.btnCiclo.ForeColor = System.Drawing.Color.White;
+            this.btnCiclo.Image = ((System.Drawing.Image)(resources.GetObject("btnCiclo.Image")));
+            this.btnCiclo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnCiclo.Location = new System.Drawing.Point(0, 265);
+            this.btnCiclo.Name = "btnCiclo";
+            this.btnCiclo.Size = new System.Drawing.Size(206, 39);
+            this.btnCiclo.TabIndex = 12;
+            this.btnCiclo.Text = "CICLO";
+            this.btnCiclo.UseVisualStyleBackColor = false;
+            this.btnCiclo.Click += new System.EventHandler(this.btnCiclo_Click);
             // 
             // btnHorarioGruConsulta
             // 
@@ -168,9 +189,9 @@ namespace Horarios_CIES
             // Logo
             // 
             this.Logo.Image = ((System.Drawing.Image)(resources.GetObject("Logo.Image")));
-            this.Logo.Location = new System.Drawing.Point(8, 29);
+            this.Logo.Location = new System.Drawing.Point(8, 4);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(190, 90);
+            this.Logo.Size = new System.Drawing.Size(190, 115);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Logo.TabIndex = 4;
             this.Logo.TabStop = false;
@@ -186,7 +207,7 @@ namespace Horarios_CIES
             this.btnInicio.ForeColor = System.Drawing.Color.White;
             this.btnInicio.Image = ((System.Drawing.Image)(resources.GetObject("btnInicio.Image")));
             this.btnInicio.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnInicio.Location = new System.Drawing.Point(0, 185);
+            this.btnInicio.Location = new System.Drawing.Point(0, 145);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(206, 39);
             this.btnInicio.TabIndex = 1;
@@ -283,7 +304,7 @@ namespace Horarios_CIES
             this.btnGrupo.ForeColor = System.Drawing.Color.White;
             this.btnGrupo.Image = ((System.Drawing.Image)(resources.GetObject("btnGrupo.Image")));
             this.btnGrupo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnGrupo.Location = new System.Drawing.Point(0, 265);
+            this.btnGrupo.Location = new System.Drawing.Point(0, 225);
             this.btnGrupo.Name = "btnGrupo";
             this.btnGrupo.Size = new System.Drawing.Size(206, 39);
             this.btnGrupo.TabIndex = 3;
@@ -302,7 +323,7 @@ namespace Horarios_CIES
             this.btnCarrera.ForeColor = System.Drawing.Color.White;
             this.btnCarrera.Image = ((System.Drawing.Image)(resources.GetObject("btnCarrera.Image")));
             this.btnCarrera.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnCarrera.Location = new System.Drawing.Point(0, 225);
+            this.btnCarrera.Location = new System.Drawing.Point(0, 185);
             this.btnCarrera.Name = "btnCarrera";
             this.btnCarrera.Size = new System.Drawing.Size(206, 39);
             this.btnCarrera.TabIndex = 2;
@@ -414,6 +435,7 @@ namespace Horarios_CIES
             this.Controls.Add(this.PanelContenedor);
             this.Controls.Add(this.PanelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Horarios CIES";
@@ -452,6 +474,7 @@ namespace Horarios_CIES
         private System.Windows.Forms.Button btnHorarioGruCrear;
         private System.Windows.Forms.Button btnHorarioGrupo;
         private System.Windows.Forms.Button btnHorarioDocConsulta;
+        private System.Windows.Forms.Button btnCiclo;
     }
 }
 

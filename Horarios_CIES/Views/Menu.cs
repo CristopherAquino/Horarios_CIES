@@ -206,6 +206,12 @@ namespace Horarios_CIES
             clickG = 1;
         }
 
+        private void btnCiclo_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new Ciclos());
+            lblTitulo.Text = "CICLO";
+        }
+
         private void MostrarHorarioDocente()
         {
             btnHorarioDocCrear.Enabled = true;

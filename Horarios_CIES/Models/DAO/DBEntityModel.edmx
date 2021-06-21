@@ -4,13 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBHModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\cris4\OneDrive\Escritorio\Horarios_CIES\Horarios_CIES\DBContext.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBMainModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\cris4\OneDrive\Escritorio\Horarios_CIES\Horarios_CIES\DBContext.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Carrera">
           <Key>
             <PropertyRef Name="IdCarrera" />
           </Key>
           <Property Name="IdCarrera" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre_Carrera" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciclos">
+          <Key>
+            <PropertyRef Name="Id_Ciclo" />
+          </Key>
+          <Property Name="Id_Ciclo" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ciclo" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
         </EntityType>
         <EntityType Name="Docente">
           <Key>
@@ -39,7 +46,7 @@
           <Property Name="Id_HorarioDocente" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_Materia" Type="integer" Nullable="false" />
           <Property Name="Id_Docente" Type="integer" Nullable="false" />
-          <Property Name="Ciclo" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Id_Ciclo" Type="integer" Nullable="false" />
           <Property Name="Dia" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="Hora_Inicio" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="Hora_Fin" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
@@ -52,6 +59,7 @@
           <Property Name="Id_HorarioGrupo" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_Grupo" Type="integer" Nullable="false" />
           <Property Name="Id_Materia" Type="integer" Nullable="false" />
+          <Property Name="Id_Ciclo" Type="integer" Nullable="false" />
           <Property Name="Id" Type="integer" Nullable="false" />
         </EntityType>
         <EntityType Name="Materia">
@@ -75,6 +83,18 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HorarioDocente_0_0">
+          <End Role="Ciclos" Type="Self.Ciclos" Multiplicity="1" />
+          <End Role="HorarioDocente" Type="Self.HorarioDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciclos">
+              <PropertyRef Name="Id_Ciclo" />
+            </Principal>
+            <Dependent Role="HorarioDocente">
+              <PropertyRef Name="Id_Ciclo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorarioDocente_1_0">
           <End Role="Docente" Type="Self.Docente" Multiplicity="1" />
           <End Role="HorarioDocente" Type="Self.HorarioDocente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -86,7 +106,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HorarioDocente_1_0">
+        <Association Name="FK_HorarioDocente_2_0">
           <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
           <End Role="HorarioDocente" Type="Self.HorarioDocente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -122,8 +142,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBHModelStoreContainer">
+        <EntityContainer Name="DBMainModelStoreContainer">
           <EntitySet Name="Carrera" EntityType="Self.Carrera" store:Type="Tables" />
+          <EntitySet Name="Ciclos" EntityType="Self.Ciclos" store:Type="Tables" />
           <EntitySet Name="Docente" EntityType="Self.Docente" store:Type="Tables" />
           <EntitySet Name="Grupo" EntityType="Self.Grupo" store:Type="Tables" />
           <EntitySet Name="HorarioDocente" EntityType="Self.HorarioDocente" store:Type="Tables" />
@@ -134,10 +155,14 @@
             <End Role="Grupo" EntitySet="Grupo" />
           </AssociationSet>
           <AssociationSet Name="FK_HorarioDocente_0_0" Association="Self.FK_HorarioDocente_0_0">
-            <End Role="Docente" EntitySet="Docente" />
+            <End Role="Ciclos" EntitySet="Ciclos" />
             <End Role="HorarioDocente" EntitySet="HorarioDocente" />
           </AssociationSet>
           <AssociationSet Name="FK_HorarioDocente_1_0" Association="Self.FK_HorarioDocente_1_0">
+            <End Role="Docente" EntitySet="Docente" />
+            <End Role="HorarioDocente" EntitySet="HorarioDocente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorarioDocente_2_0" Association="Self.FK_HorarioDocente_2_0">
             <End Role="Materia" EntitySet="Materia" />
             <End Role="HorarioDocente" EntitySet="HorarioDocente" />
           </AssociationSet>
@@ -154,7 +179,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DBHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DBMainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Carrera">
           <Key>
             <PropertyRef Name="IdCarrera" />
@@ -162,6 +187,14 @@
           <Property Name="IdCarrera" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre_Carrera" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Grupo" Relationship="Self.FK_Grupo_0_0" FromRole="Carrera" ToRole="Grupo" />
+        </EntityType>
+        <EntityType Name="Ciclos">
+          <Key>
+            <PropertyRef Name="Id_Ciclo" />
+          </Key>
+          <Property Name="Id_Ciclo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ciclo" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HorarioDocente" Relationship="Self.FK_HorarioDocente_0_0" FromRole="Ciclos" ToRole="HorarioDocente" />
         </EntityType>
         <EntityType Name="Docente">
           <Key>
@@ -173,7 +206,7 @@
           <Property Name="Telefono_Casa" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Telefono_Oficina" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Correo_Electronico" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HorarioDocente" Relationship="Self.FK_HorarioDocente_0_0" FromRole="Docente" ToRole="HorarioDocente" />
+          <NavigationProperty Name="HorarioDocente" Relationship="Self.FK_HorarioDocente_1_0" FromRole="Docente" ToRole="HorarioDocente" />
         </EntityType>
         <EntityType Name="Grupo">
           <Key>
@@ -193,13 +226,14 @@
           <Property Name="Id_HorarioDocente" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_Materia" Type="Int64" Nullable="false" />
           <Property Name="Id_Docente" Type="Int64" Nullable="false" />
-          <Property Name="Ciclo" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_Ciclo" Type="Int64" Nullable="false" />
           <Property Name="Dia" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Hora_Inicio" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Hora_Fin" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Id" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Docente" Relationship="Self.FK_HorarioDocente_0_0" FromRole="HorarioDocente" ToRole="Docente" />
-          <NavigationProperty Name="Materia" Relationship="Self.FK_HorarioDocente_1_0" FromRole="HorarioDocente" ToRole="Materia" />
+          <NavigationProperty Name="Ciclos" Relationship="Self.FK_HorarioDocente_0_0" FromRole="HorarioDocente" ToRole="Ciclos" />
+          <NavigationProperty Name="Docente" Relationship="Self.FK_HorarioDocente_1_0" FromRole="HorarioDocente" ToRole="Docente" />
+          <NavigationProperty Name="Materia" Relationship="Self.FK_HorarioDocente_2_0" FromRole="HorarioDocente" ToRole="Materia" />
         </EntityType>
         <EntityType Name="HorarioGrupo">
           <Key>
@@ -208,6 +242,7 @@
           <Property Name="Id_HorarioGrupo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_Grupo" Type="Int64" Nullable="false" />
           <Property Name="Id_Materia" Type="Int64" Nullable="false" />
+          <Property Name="Id_Ciclo" Type="Int64" Nullable="false" />
           <Property Name="Id" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Grupo" Relationship="Self.FK_HorarioGrupo_1_0" FromRole="HorarioGrupo" ToRole="Grupo" />
           <NavigationProperty Name="Materia" Relationship="Self.FK_HorarioGrupo_0_0" FromRole="HorarioGrupo" ToRole="Materia" />
@@ -219,7 +254,7 @@
           <Property Name="Id_Materia" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Codigo_Materia" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nombre_Materia" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="HorarioDocente" Relationship="Self.FK_HorarioDocente_1_0" FromRole="Materia" ToRole="HorarioDocente" />
+          <NavigationProperty Name="HorarioDocente" Relationship="Self.FK_HorarioDocente_2_0" FromRole="Materia" ToRole="HorarioDocente" />
           <NavigationProperty Name="HorarioGrupo" Relationship="Self.FK_HorarioGrupo_0_0" FromRole="Materia" ToRole="HorarioGrupo" />
         </EntityType>
         <Association Name="FK_Grupo_0_0">
@@ -235,6 +270,18 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HorarioDocente_0_0">
+          <End Role="Ciclos" Type="Self.Ciclos" Multiplicity="1" />
+          <End Role="HorarioDocente" Type="Self.HorarioDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciclos">
+              <PropertyRef Name="Id_Ciclo" />
+            </Principal>
+            <Dependent Role="HorarioDocente">
+              <PropertyRef Name="Id_Ciclo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorarioDocente_1_0">
           <End Role="Docente" Type="Self.Docente" Multiplicity="1" />
           <End Role="HorarioDocente" Type="Self.HorarioDocente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -258,7 +305,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HorarioDocente_1_0">
+        <Association Name="FK_HorarioDocente_2_0">
           <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
           <End Role="HorarioDocente" Type="Self.HorarioDocente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -284,6 +331,7 @@
         </Association>
         <EntityContainer Name="DBContextString" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Carrera" EntityType="Self.Carrera" />
+          <EntitySet Name="Ciclos" EntityType="Self.Ciclos" />
           <EntitySet Name="Docente" EntityType="Self.Docente" />
           <EntitySet Name="Grupo" EntityType="Self.Grupo" />
           <EntitySet Name="HorarioDocente" EntityType="Self.HorarioDocente" />
@@ -294,6 +342,10 @@
             <End Role="Grupo" EntitySet="Grupo" />
           </AssociationSet>
           <AssociationSet Name="FK_HorarioDocente_0_0" Association="Self.FK_HorarioDocente_0_0">
+            <End Role="Ciclos" EntitySet="Ciclos" />
+            <End Role="HorarioDocente" EntitySet="HorarioDocente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorarioDocente_1_0" Association="Self.FK_HorarioDocente_1_0">
             <End Role="Docente" EntitySet="Docente" />
             <End Role="HorarioDocente" EntitySet="HorarioDocente" />
           </AssociationSet>
@@ -301,7 +353,7 @@
             <End Role="Grupo" EntitySet="Grupo" />
             <End Role="HorarioGrupo" EntitySet="HorarioGrupo" />
           </AssociationSet>
-          <AssociationSet Name="FK_HorarioDocente_1_0" Association="Self.FK_HorarioDocente_1_0">
+          <AssociationSet Name="FK_HorarioDocente_2_0" Association="Self.FK_HorarioDocente_2_0">
             <End Role="Materia" EntitySet="Materia" />
             <End Role="HorarioDocente" EntitySet="HorarioDocente" />
           </AssociationSet>
@@ -315,17 +367,25 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBHModelStoreContainer" CdmEntityContainer="DBContextString">
+        <EntityContainerMapping StorageEntityContainer="DBMainModelStoreContainer" CdmEntityContainer="DBContextString">
           <EntitySetMapping Name="Carrera">
-            <EntityTypeMapping TypeName="DBHModel.Carrera">
+            <EntityTypeMapping TypeName="DBMainModel.Carrera">
               <MappingFragment StoreEntitySet="Carrera">
                 <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
                 <ScalarProperty Name="Nombre_Carrera" ColumnName="Nombre_Carrera" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Ciclos">
+            <EntityTypeMapping TypeName="DBMainModel.Ciclos">
+              <MappingFragment StoreEntitySet="Ciclos">
+                <ScalarProperty Name="Id_Ciclo" ColumnName="Id_Ciclo" />
+                <ScalarProperty Name="Ciclo" ColumnName="Ciclo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Docente">
-            <EntityTypeMapping TypeName="DBHModel.Docente">
+            <EntityTypeMapping TypeName="DBMainModel.Docente">
               <MappingFragment StoreEntitySet="Docente">
                 <ScalarProperty Name="Id_Docente" ColumnName="Id_Docente" />
                 <ScalarProperty Name="Nombre_Docente" ColumnName="Nombre_Docente" />
@@ -337,7 +397,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Grupo">
-            <EntityTypeMapping TypeName="DBHModel.Grupo">
+            <EntityTypeMapping TypeName="DBMainModel.Grupo">
               <MappingFragment StoreEntitySet="Grupo">
                 <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
                 <ScalarProperty Name="Nombre_Grupo" ColumnName="Nombre_Grupo" />
@@ -347,12 +407,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HorarioDocente">
-            <EntityTypeMapping TypeName="DBHModel.HorarioDocente">
+            <EntityTypeMapping TypeName="DBMainModel.HorarioDocente">
               <MappingFragment StoreEntitySet="HorarioDocente">
                 <ScalarProperty Name="Id_HorarioDocente" ColumnName="Id_HorarioDocente" />
                 <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
                 <ScalarProperty Name="Id_Docente" ColumnName="Id_Docente" />
-                <ScalarProperty Name="Ciclo" ColumnName="Ciclo" />
+                <ScalarProperty Name="Id_Ciclo" ColumnName="Id_Ciclo" />
                 <ScalarProperty Name="Dia" ColumnName="Dia" />
                 <ScalarProperty Name="Hora_Inicio" ColumnName="Hora_Inicio" />
                 <ScalarProperty Name="Hora_Fin" ColumnName="Hora_Fin" />
@@ -361,17 +421,18 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HorarioGrupo">
-            <EntityTypeMapping TypeName="DBHModel.HorarioGrupo">
+            <EntityTypeMapping TypeName="DBMainModel.HorarioGrupo">
               <MappingFragment StoreEntitySet="HorarioGrupo">
                 <ScalarProperty Name="Id_HorarioGrupo" ColumnName="Id_HorarioGrupo" />
                 <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
                 <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
+                <ScalarProperty Name="Id_Ciclo" ColumnName="Id_Ciclo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Materia">
-            <EntityTypeMapping TypeName="DBHModel.Materia">
+            <EntityTypeMapping TypeName="DBMainModel.Materia">
               <MappingFragment StoreEntitySet="Materia">
                 <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
                 <ScalarProperty Name="Codigo_Materia" ColumnName="Codigo_Materia" />

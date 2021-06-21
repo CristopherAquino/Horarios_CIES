@@ -35,8 +35,9 @@ namespace Horarios_CIES.Views
         int indiceDia;
         int click = 0;
         int id=0;
+        int unico = 0;
 
-        public void Horas()
+        private void Horas()
         {
             try
             {
@@ -49,11 +50,11 @@ namespace Horarios_CIES.Views
             }
             catch (Exception a)
             {
-                MessageBox.Show("Sin conexión a datos" + a.Message);
+                MessageBox.Show("ERROR: " + a.Message);
             }
         }
 
-        public void identifica()
+        private void identifica()
         {
             int c = horario.identificador();
             if(c != 0)
@@ -61,6 +62,22 @@ namespace Horarios_CIES.Views
                 id = c + 1;
             }
             else { id = 1; }
+        }
+
+        private void existe()
+        {
+            int c = horario.identificador();
+            int iddocente = (int)ComboDocente.SelectedValue;
+            int idciclo = (int)ComboCiclo.SelectedValue;
+            if (c != 0)
+            {
+                bool a = horario.valida(iddocente, idciclo);
+                if (a == true)
+                {
+                    unico = 1;
+                }
+                else { unico = 0; }
+            }
         }
 
         private void ObtenerCombos()
@@ -74,6 +91,10 @@ namespace Horarios_CIES.Views
                 ComboMateria.DataSource = horario.comboMateria();
                 ComboMateria.ValueMember = "Id_Materia";
                 ComboMateria.DisplayMember = "Nombre_Materia";
+
+                ComboCiclo.DataSource = horario.comboCiclo();
+                ComboCiclo.ValueMember = "Id_Ciclo";
+                ComboCiclo.DisplayMember = "Ciclo";
             }
             catch (Exception ex)
             {
@@ -88,10 +109,9 @@ namespace Horarios_CIES.Views
                 identifica();
                 Horas();
                 iniciodatos();
-                txtCiclo.Focus();
-                TablaHorarioDocenteADD.ClearSelection();
                 ValidacionRegistros();
-           }
+                TablaHorarioDocenteADD.ClearSelection();
+            }
            catch(Exception ex) { MessageBox.Show("ERROR: "+ ex.Message); }
         }
 
@@ -105,9 +125,9 @@ namespace Horarios_CIES.Views
                 if (flag == true)
                 {
                     click = click + 1;
-                    Datos();
                     TablaHorarioDocenteADD.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells);
                     ComboDocente.Enabled = false;
+                    ComboCiclo.Enabled = false;
                 }
             }
             else { MessageBox.Show("AGREGUE DIA Y HORAS"); }
@@ -117,15 +137,16 @@ namespace Horarios_CIES.Views
         {
             try
             {
-                 if (click != 0)
-                 {
-                     if (!txtCiclo.Text.Equals(""))
-                     {
-                        foreach(DataGridViewRow row in dtDatos.Rows)
+                if (click != 0)
+                {
+                    existe();
+                    if (unico == 0)
+                    {
+                        foreach (DataGridViewRow row in dtDatos.Rows)
                         {
                             int idmateria = int.Parse(row.Cells["idmateria"].Value.ToString());
                             int iddocente = int.Parse(row.Cells["iddocente"].Value.ToString());
-                            string ciclo = txtCiclo.Text;
+                            int ciclo = int.Parse(row.Cells["idciclo"].Value.ToString());
                             string dias = row.Cells["dias"].Value.ToString();
                             string inicio = row.Cells["inicio"].Value.ToString();
                             string final = row.Cells["final"].Value.ToString();
@@ -135,11 +156,11 @@ namespace Horarios_CIES.Views
                         aPDF();
                         Fin();
                     }
-                     else { MessageBox.Show("AGREGUE EL CICLO"); }
-                 }
-                 else { MessageBox.Show("HORARIO VACIO"); }
+                    else { MessageBox.Show("EL DOCENTE YA TIENE HORARIO ESTABLECIDO EN ESTE MISMO CICLO"); }
+                }
+                else { MessageBox.Show("HORARIO VACIO"); }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             { MessageBox.Show("ERROR: " + ex.Message); }
         }
 
@@ -188,6 +209,7 @@ namespace Horarios_CIES.Views
                                                     {
                                                         TablaHorarioDocenteADD.Rows[indexhorainiciotabla + i].Cells[indexdiatabla].Value = mostrar;
                                                     }
+                                                    Datos();
                                                     flag = true;
                                                 }
                                                 else { MessageBox.Show("DIA Y HORAS OCUPADAS"); }
@@ -201,6 +223,7 @@ namespace Horarios_CIES.Views
                                             {
                                                 TablaHorarioDocenteADD.Rows[indexhorainiciotabla].Cells[indexdiatabla].Value = mostrar;
                                                 flag = true;
+                                                Datos();
                                             }
                                             else { MessageBox.Show("DIA Y HORA OCUPADO"); }
                                         }
@@ -229,6 +252,12 @@ namespace Horarios_CIES.Views
             else if (ComboMateria.Text.Equals(""))
             {
                 MessageBox.Show("REGISTRE MATERIAS");
+                btnAgregar.Enabled = false;
+                btnGuardar.Enabled = false;
+            }
+            else if (ComboCiclo.Text.Equals(""))
+            {
+                MessageBox.Show("REGISTRE CICLOS ESCOLARES");
                 btnAgregar.Enabled = false;
                 btnGuardar.Enabled = false;
             }
@@ -279,15 +308,13 @@ namespace Horarios_CIES.Views
         private void Datos()
         {
             dtDatos.Rows.Add((int)ComboMateria.SelectedValue, (int)ComboDocente.SelectedValue,
-                dia, horainicio, horafin);
+                (int)ComboCiclo.SelectedValue, dia, horainicio, horafin);
         }
 
         private void Fin()
         {
             limpiartabla();
             iniciodatos();
-            txtCiclo.Clear();
-            txtCiclo.Focus();
             identifica();
         }
 
@@ -306,9 +333,10 @@ namespace Horarios_CIES.Views
             Horas();
             click = 0;
             ComboDocente.Enabled = true;
+            ComboCiclo.Enabled = true;
         }
 
-        public void GenerarDocumento(Document document)
+        private void GenerarDocumento(Document document)
         {
             int i, j;
             PdfPTable datatable = new PdfPTable(TablaHorarioDocenteADD.ColumnCount);
@@ -335,7 +363,7 @@ namespace Horarios_CIES.Views
             document.Add(datatable);
         }
 
-        public float[] GetTamañoColumnas(DataGridView dg)
+        private float[] GetTamañoColumnas(DataGridView dg)
         {
             float[] values = new float[dg.ColumnCount];
             for (int i = 0; i < dg.ColumnCount; i++)
@@ -350,7 +378,7 @@ namespace Horarios_CIES.Views
             limpiartabla();
         }
 
-        public void aPDF()
+        private void aPDF()
         {
             try
             {
@@ -381,7 +409,7 @@ namespace Horarios_CIES.Views
 
                     doc.Add(new Paragraph("UNIVERSIDAD CIES", FontFactory.GetFont("ARIAL", 24, iTextSharp.text.Font.BOLD, fontcolour)));
                     doc.Add(Chunk.NEWLINE);
-                    doc.Add(new Paragraph("CICLO: "+txtCiclo.Text));
+                    doc.Add(new Paragraph("CICLO: "+ComboCiclo.Text));
                     doc.Add(new Paragraph("HORARIO DOCENTE"));
                     doc.Add(new Paragraph("DOCENTE: " + ComboDocente.Text));
 

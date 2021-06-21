@@ -12,15 +12,18 @@ namespace Horarios_CIES.Models.DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class HorarioGrupo
+    public partial class Ciclos
     {
-        public long Id_HorarioGrupo { get; set; }
-        public long Id_Grupo { get; set; }
-        public long Id_Materia { get; set; }
-        public long Id_Ciclo { get; set; }
-        public long Id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Ciclos()
+        {
+            this.HorarioDocente = new HashSet<HorarioDocente>();
+        }
     
-        public virtual Grupo Grupo { get; set; }
-        public virtual Materia Materia { get; set; }
+        public long Id_Ciclo { get; set; }
+        public string Ciclo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HorarioDocente> HorarioDocente { get; set; }
     }
 }

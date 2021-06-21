@@ -15,6 +15,25 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\cris4\OneDrive\Escritorio\Articulos\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>HORARIOS CIES</ProductName>
+    <PublisherName>CRISTOPHER AQUINO</PublisherName>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -25,6 +44,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +56,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="AltoControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AltoControls.1.0.1\lib\AltoControls.dll</HintPath>
@@ -81,13 +116,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CarreraController.cs" />
+    <Compile Include="Controllers\CicloController.cs" />
     <Compile Include="Controllers\DocenteController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\HorarioDocenteConsultaController.cs" />
+    <Compile Include="Controllers\HorarioGrupoConsultaController.cs" />
+    <Compile Include="Controllers\HorarioGrupoCrearController.cs" />
     <Compile Include="Controllers\HorarioDocenteCrearController.cs" />
-    <Compile Include="Controllers\HorarioGrupoController.cs" />
     <Compile Include="Controllers\MateriaController.cs" />
     <Compile Include="Models\DAO\Carrera.cs">
+      <DependentUpon>DBEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAO\Ciclos.cs">
       <DependentUpon>DBEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAO\DBEntityModel.Context.cs">
@@ -121,6 +161,7 @@
       <DependentUpon>DBEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DTO\CarreraModel.cs" />
+    <Compile Include="Models\DTO\CicloModel.cs" />
     <Compile Include="Models\DTO\DocenteModel.cs" />
     <Compile Include="Models\DTO\GrupoModel.cs" />
     <Compile Include="Models\DTO\HorarioDocenteModel.cs" />
@@ -128,6 +169,12 @@
     <Compile Include="Models\DTO\MateriaModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Ciclos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Ciclos.designer.cs">
+      <DependentUpon>Ciclos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Carrera.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +235,16 @@
     <Compile Include="Views\Menu.designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Content Include="Models\DAO\DBEntityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBEntityModel.edmx</DependentUpon>
+      <LastGenOutput>DBEntityModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DAO\DBEntityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBEntityModel.edmx</DependentUpon>
+      <LastGenOutput>DBEntityModel.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -197,6 +254,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Ciclos.resx">
+      <DependentUpon>Ciclos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Carrera.resx">
       <DependentUpon>Carrera.cs</DependentUpon>
     </EmbeddedResource>
@@ -227,9 +287,9 @@
     <EmbeddedResource Include="Views\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DBContext.db">
+    <Content Include="DBContext.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <EntityDeploy Include="Models\DAO\DBEntityModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBEntityModel.Designer.cs</LastGenOutput>
@@ -238,6 +298,7 @@
       <DependentUpon>DBEntityModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -255,17 +316,18 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\DAO\DBEntityModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBEntityModel.edmx</DependentUpon>
-      <LastGenOutput>DBEntityModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\DAO\DBEntityModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBEntityModel.edmx</DependentUpon>
-      <LastGenOutput>DBEntityModel.cs</LastGenOutput>
-    </Content>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

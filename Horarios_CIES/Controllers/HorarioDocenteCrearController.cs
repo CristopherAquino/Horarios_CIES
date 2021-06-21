@@ -42,14 +42,29 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public void añadir(int idM, int idD, string ciclo, string dia, string horai, string horaf, int id)
+        public IEnumerable<CicloModel> comboCiclo()
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                IEnumerable<CicloModel> lst =
+                    (from d in db.Ciclos
+                     select new CicloModel
+                     {
+                         Id_Ciclo = (int)d.Id_Ciclo,
+                         Ciclo = d.Ciclo
+                     }).ToList();
+                return lst;
+            }
+        }
+
+        public void añadir(int idM, int idD, int ciclo, string dia, string horai, string horaf, int id)
         {
             using (DBContextString db = new DBContextString())
             {
                 Models.DAO.HorarioDocente horario = new Models.DAO.HorarioDocente();
                 horario.Id_Materia = idM;
                 horario.Id_Docente = idD;
-                horario.Ciclo = ciclo;
+                horario.Id_Ciclo = ciclo;
                 horario.Dia = dia;
                 horario.Hora_Inicio = horai;
                 horario.Hora_Fin = horaf;
@@ -96,6 +111,37 @@ namespace Horarios_CIES.Controllers
                 }
                 int k = 0;
                 return k;
+            }
+        }
+
+        public bool valida(int id, int c)
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                var a = IsIENumerableLleno(existencia(id, c));
+                if (a != false)
+                {
+                    bool e = true;
+                    return e;
+                }
+                bool k = false;
+                return k;
+            }
+        }
+
+        public IEnumerable<HorarioDocenteModel> existencia(int id, int ciclo)
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                IEnumerable<HorarioDocenteModel> lst =
+                    (from d in db.HorarioDocente.Where(o => o.Id_Docente == id && o.Id_Ciclo == ciclo)
+                     select new HorarioDocenteModel
+                     {
+                         Id_HorarioDocente = (int)d.Id_HorarioDocente,
+                         Id_Docente = (int)d.Id_Docente,
+                         Id_Ciclo = (int)d.Id_Ciclo
+                     }).ToList();
+                return lst;
             }
         }
     }
