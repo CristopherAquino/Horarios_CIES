@@ -31,6 +31,7 @@ namespace Horarios_CIES.Controllers
                 return lst;
             }
         }
+
         public IEnumerable<MateriaModel> comboMateria()
         {
             using (DBContextString db = new DBContextString())

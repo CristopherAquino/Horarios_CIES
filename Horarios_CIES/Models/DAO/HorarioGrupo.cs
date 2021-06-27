@@ -14,12 +14,12 @@ namespace Horarios_CIES.Models.DAO
     
     public partial class HorarioGrupo
     {
-        public long Id_HorarioGrupo { get; set; }
+        public long Id { get; set; }
         public long Id_Grupo { get; set; }
         public long Id_Materia { get; set; }
         public long Id_Ciclo { get; set; }
-        public long Id { get; set; }
     
+        public virtual Ciclos Ciclos { get; set; }
         public virtual Grupo Grupo { get; set; }
         public virtual Materia Materia { get; set; }
     }

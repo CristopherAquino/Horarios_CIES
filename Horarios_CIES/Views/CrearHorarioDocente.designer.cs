@@ -29,19 +29,19 @@ namespace Horarios_CIES.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TablaHorarioDocenteADD = new System.Windows.Forms.DataGridView();
             this.Hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lunes = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,14 +65,14 @@ namespace Horarios_CIES.Views
             this.label6 = new System.Windows.Forms.Label();
             this.btnGuardar = new AltoControls.AltoButton();
             this.dtDatos = new System.Windows.Forms.DataGridView();
-            this.btnEliminar = new AltoControls.AltoButton();
-            this.ComboCiclo = new System.Windows.Forms.ComboBox();
             this.idmateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iddocente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idciclo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.final = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminar = new AltoControls.AltoButton();
+            this.ComboCiclo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.TablaHorarioDocenteADD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDatos)).BeginInit();
             this.SuspendLayout();
@@ -82,9 +82,9 @@ namespace Horarios_CIES.Views
             this.TablaHorarioDocenteADD.AllowUserToAddRows = false;
             this.TablaHorarioDocenteADD.AllowUserToDeleteRows = false;
             this.TablaHorarioDocenteADD.AllowUserToResizeColumns = false;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaHorarioDocenteADD.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaHorarioDocenteADD.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.TablaHorarioDocenteADD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TablaHorarioDocenteADD.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -93,14 +93,14 @@ namespace Horarios_CIES.Views
             this.TablaHorarioDocenteADD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TablaHorarioDocenteADD.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.TablaHorarioDocenteADD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Nirmala UI", 11F);
-            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaHorarioDocenteADD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nirmala UI", 11F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaHorarioDocenteADD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.TablaHorarioDocenteADD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaHorarioDocenteADD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Hora,
@@ -111,36 +111,36 @@ namespace Horarios_CIES.Views
             this.Viernes,
             this.Sabado,
             this.Domingo});
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle50.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle50.Font = new System.Drawing.Font("Nirmala UI", 9F);
-            dataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaHorarioDocenteADD.DefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Nirmala UI", 9F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaHorarioDocenteADD.DefaultCellStyle = dataGridViewCellStyle11;
             this.TablaHorarioDocenteADD.EnableHeadersVisualStyles = false;
             this.TablaHorarioDocenteADD.GridColor = System.Drawing.Color.Navy;
             this.TablaHorarioDocenteADD.Location = new System.Drawing.Point(93, 175);
             this.TablaHorarioDocenteADD.MultiSelect = false;
             this.TablaHorarioDocenteADD.Name = "TablaHorarioDocenteADD";
             this.TablaHorarioDocenteADD.ReadOnly = true;
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle51.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle51.Font = new System.Drawing.Font("Nirmala UI", 9F);
-            dataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaHorarioDocenteADD.RowHeadersDefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Nirmala UI", 9F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaHorarioDocenteADD.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.TablaHorarioDocenteADD.RowHeadersVisible = false;
             this.TablaHorarioDocenteADD.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle52.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle52.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
-            dataGridViewCellStyle52.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaHorarioDocenteADD.RowsDefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaHorarioDocenteADD.RowsDefaultCellStyle = dataGridViewCellStyle13;
             this.TablaHorarioDocenteADD.RowTemplate.Height = 25;
             this.TablaHorarioDocenteADD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.TablaHorarioDocenteADD.ShowCellErrors = false;
@@ -153,10 +153,10 @@ namespace Horarios_CIES.Views
             // 
             // Hora
             // 
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
-            dataGridViewCellStyle42.ForeColor = System.Drawing.Color.White;
-            this.Hora.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            this.Hora.DefaultCellStyle = dataGridViewCellStyle3;
             this.Hora.HeaderText = "HORA";
             this.Hora.Name = "Hora";
             this.Hora.ReadOnly = true;
@@ -165,8 +165,8 @@ namespace Horarios_CIES.Views
             // 
             // Lunes
             // 
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Lunes.DefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Lunes.DefaultCellStyle = dataGridViewCellStyle4;
             this.Lunes.HeaderText = "LUNES";
             this.Lunes.Name = "Lunes";
             this.Lunes.ReadOnly = true;
@@ -175,8 +175,8 @@ namespace Horarios_CIES.Views
             // 
             // Martes
             // 
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Martes.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Martes.DefaultCellStyle = dataGridViewCellStyle5;
             this.Martes.HeaderText = "MARTES";
             this.Martes.Name = "Martes";
             this.Martes.ReadOnly = true;
@@ -185,8 +185,8 @@ namespace Horarios_CIES.Views
             // 
             // Miercoles
             // 
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Miercoles.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Miercoles.DefaultCellStyle = dataGridViewCellStyle6;
             this.Miercoles.HeaderText = "MIERCOLES";
             this.Miercoles.Name = "Miercoles";
             this.Miercoles.ReadOnly = true;
@@ -195,8 +195,8 @@ namespace Horarios_CIES.Views
             // 
             // Jueves
             // 
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Jueves.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Jueves.DefaultCellStyle = dataGridViewCellStyle7;
             this.Jueves.HeaderText = "JUEVES";
             this.Jueves.Name = "Jueves";
             this.Jueves.ReadOnly = true;
@@ -205,8 +205,8 @@ namespace Horarios_CIES.Views
             // 
             // Viernes
             // 
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Viernes.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Viernes.DefaultCellStyle = dataGridViewCellStyle8;
             this.Viernes.HeaderText = "VIERNES";
             this.Viernes.Name = "Viernes";
             this.Viernes.ReadOnly = true;
@@ -215,8 +215,8 @@ namespace Horarios_CIES.Views
             // 
             // Sabado
             // 
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Sabado.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Sabado.DefaultCellStyle = dataGridViewCellStyle9;
             this.Sabado.HeaderText = "SABADO";
             this.Sabado.Name = "Sabado";
             this.Sabado.ReadOnly = true;
@@ -225,8 +225,8 @@ namespace Horarios_CIES.Views
             // 
             // Domingo
             // 
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Domingo.DefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Domingo.DefaultCellStyle = dataGridViewCellStyle10;
             this.Domingo.HeaderText = "DOMINGO";
             this.Domingo.Name = "Domingo";
             this.Domingo.ReadOnly = true;
@@ -485,39 +485,6 @@ namespace Horarios_CIES.Views
             this.dtDatos.TabIndex = 55;
             this.dtDatos.Visible = false;
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Active1 = System.Drawing.Color.OrangeRed;
-            this.btnEliminar.Active2 = System.Drawing.Color.OrangeRed;
-            this.btnEliminar.BackColor = System.Drawing.Color.Transparent;
-            this.btnEliminar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnEliminar.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminar.Inactive1 = System.Drawing.Color.Red;
-            this.btnEliminar.Inactive2 = System.Drawing.Color.Red;
-            this.btnEliminar.Location = new System.Drawing.Point(504, 580);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Radius = 5;
-            this.btnEliminar.Size = new System.Drawing.Size(88, 30);
-            this.btnEliminar.Stroke = false;
-            this.btnEliminar.StrokeColor = System.Drawing.Color.Gray;
-            this.btnEliminar.TabIndex = 56;
-            this.btnEliminar.Text = "LIMPIAR";
-            this.btnEliminar.Transparency = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // ComboCiclo
-            // 
-            this.ComboCiclo.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ComboCiclo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboCiclo.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ComboCiclo.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
-            this.ComboCiclo.FormattingEnabled = true;
-            this.ComboCiclo.Location = new System.Drawing.Point(385, 60);
-            this.ComboCiclo.Name = "ComboCiclo";
-            this.ComboCiclo.Size = new System.Drawing.Size(245, 25);
-            this.ComboCiclo.TabIndex = 57;
-            // 
             // idmateria
             // 
             this.idmateria.HeaderText = "idmateria";
@@ -558,6 +525,40 @@ namespace Horarios_CIES.Views
             this.final.Name = "final";
             this.final.ReadOnly = true;
             this.final.Visible = false;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Active1 = System.Drawing.Color.OrangeRed;
+            this.btnEliminar.Active2 = System.Drawing.Color.OrangeRed;
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEliminar.BackColor = System.Drawing.Color.Transparent;
+            this.btnEliminar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnEliminar.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminar.Inactive1 = System.Drawing.Color.Red;
+            this.btnEliminar.Inactive2 = System.Drawing.Color.Red;
+            this.btnEliminar.Location = new System.Drawing.Point(504, 580);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Radius = 5;
+            this.btnEliminar.Size = new System.Drawing.Size(88, 30);
+            this.btnEliminar.Stroke = false;
+            this.btnEliminar.StrokeColor = System.Drawing.Color.Gray;
+            this.btnEliminar.TabIndex = 56;
+            this.btnEliminar.Text = "LIMPIAR";
+            this.btnEliminar.Transparency = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // ComboCiclo
+            // 
+            this.ComboCiclo.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ComboCiclo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboCiclo.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ComboCiclo.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
+            this.ComboCiclo.FormattingEnabled = true;
+            this.ComboCiclo.Location = new System.Drawing.Point(385, 60);
+            this.ComboCiclo.Name = "ComboCiclo";
+            this.ComboCiclo.Size = new System.Drawing.Size(245, 25);
+            this.ComboCiclo.TabIndex = 57;
             // 
             // CrearHorarioDocente
             // 

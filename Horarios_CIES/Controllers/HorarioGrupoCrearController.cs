@@ -171,5 +171,31 @@ namespace Horarios_CIES.Controllers
                 return lst;
             }
         }
+
+        public bool IsIENumerableLlenoTabla(IEnumerable<TablaMateriaDocente> Existe)
+        {
+            bool isFull = false;
+            foreach (TablaMateriaDocente item in Existe)
+            {
+                isFull = true;
+                break;
+            }
+            return isFull;
+        }
+
+        public bool vacia(int? idc, int? idM, int? idD)
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                var a = IsIENumerableLlenoTabla(ObtenerTablaMaterias(idc, idM, idD));
+                if (a != false)
+                {
+                    bool e = true;
+                    return e;
+                }
+                bool k = false;
+                return k;
+            }
+        }
     }
 }

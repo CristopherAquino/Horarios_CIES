@@ -72,9 +72,15 @@ namespace Horarios_CIES.Views
             this.ComboFin = new System.Windows.Forms.ComboBox();
             this.ComboDocente = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.TablaPrueba = new System.Windows.Forms.DataGridView();
+            this.materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dias = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horadeinicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horadefin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.TablaHorarioGrupoADD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaMateriaDocente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaPrueba)).BeginInit();
             this.SuspendLayout();
             // 
             // ComboGrupo
@@ -288,6 +294,7 @@ namespace Horarios_CIES.Views
             // 
             this.btnLimpiar.Active1 = System.Drawing.Color.OrangeRed;
             this.btnLimpiar.Active2 = System.Drawing.Color.OrangeRed;
+            this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLimpiar.BackColor = System.Drawing.Color.Transparent;
             this.btnLimpiar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnLimpiar.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold);
@@ -550,12 +557,60 @@ namespace Horarios_CIES.Views
             this.label2.Text = "DOCENTE";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // TablaPrueba
+            // 
+            this.TablaPrueba.AllowUserToAddRows = false;
+            this.TablaPrueba.AllowUserToDeleteRows = false;
+            this.TablaPrueba.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.TablaPrueba.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TablaPrueba.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.TablaPrueba.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.TablaPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TablaPrueba.ColumnHeadersVisible = false;
+            this.TablaPrueba.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.materia,
+            this.dias,
+            this.horadeinicio,
+            this.horadefin});
+            this.TablaPrueba.Enabled = false;
+            this.TablaPrueba.Location = new System.Drawing.Point(40, 184);
+            this.TablaPrueba.Name = "TablaPrueba";
+            this.TablaPrueba.ReadOnly = true;
+            this.TablaPrueba.Size = new System.Drawing.Size(10, 19);
+            this.TablaPrueba.TabIndex = 77;
+            this.TablaPrueba.Visible = false;
+            // 
+            // materia
+            // 
+            this.materia.HeaderText = "materia";
+            this.materia.Name = "materia";
+            this.materia.ReadOnly = true;
+            // 
+            // dias
+            // 
+            this.dias.HeaderText = "dias";
+            this.dias.Name = "dias";
+            this.dias.ReadOnly = true;
+            // 
+            // horadeinicio
+            // 
+            this.horadeinicio.HeaderText = "horadeinicio";
+            this.horadeinicio.Name = "horadeinicio";
+            this.horadeinicio.ReadOnly = true;
+            // 
+            // horadefin
+            // 
+            this.horadefin.HeaderText = "horadefin";
+            this.horadefin.Name = "horadefin";
+            this.horadefin.ReadOnly = true;
+            // 
             // CrearHorarioGrupo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1097, 621);
+            this.Controls.Add(this.TablaPrueba);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ComboDocente);
             this.Controls.Add(this.ComboMateria);
@@ -579,6 +634,7 @@ namespace Horarios_CIES.Views
             ((System.ComponentModel.ISupportInitialize)(this.TablaHorarioGrupoADD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaMateriaDocente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaPrueba)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -612,5 +668,10 @@ namespace Horarios_CIES.Views
         private System.Windows.Forms.DataGridViewTextBoxColumn idgrupo;
         private System.Windows.Forms.DataGridViewTextBoxColumn idmateria;
         private System.Windows.Forms.DataGridViewTextBoxColumn idciclo;
+        private System.Windows.Forms.DataGridView TablaPrueba;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn horadeinicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn horadefin;
     }
 }
