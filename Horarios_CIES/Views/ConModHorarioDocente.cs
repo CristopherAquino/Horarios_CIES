@@ -318,18 +318,26 @@ namespace Horarios_CIES.Views
                         finmetodo = fila.Cells[4].Value.ToString();
                         int inicioid = ComboInicio.FindString(iniciometodo);
                         int finid = ComboFin.FindString(finmetodo);
-
+                        
                         if (dia.Equals(diametodo))
                         {
                             if ((compainicio >= inicioid) && (compainicio <= finid))
                             {
                                 MessageBox.Show("LA HORA DE INICIO NO ESTA DISPONIBLE");
                                 valida = false;
+                                break;
                             }
                             else if ((compafin >= inicioid) && (compafin <= finid))
                             {
                                 MessageBox.Show("EL FIN DE LA HORA NO ESTA DISPONIBLE");
                                 valida = false;
+                                break;
+                            }
+                            else if ((inicioid >= compainicio) && (finid <= compafin))
+                            {
+                                MessageBox.Show("HORA OCUPADA POR OTRA MATERIA");
+                                valida = false;
+                                break;
                             }
                         }
                     }

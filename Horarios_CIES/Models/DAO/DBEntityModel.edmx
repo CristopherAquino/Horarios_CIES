@@ -52,19 +52,15 @@
           <Property Name="Hora_Fin" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="Id" Type="integer" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'main.HorarioGrupo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="HorarioGrupo">
           <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Id_Grupo" />
-            <PropertyRef Name="Id_Materia" />
-            <PropertyRef Name="Id_Ciclo" />
+            <PropertyRef Name="Id_HorarioGrupo" />
           </Key>
-          <Property Name="Id" Type="integer" Nullable="false" />
+          <Property Name="Id_HorarioGrupo" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_Grupo" Type="integer" Nullable="false" />
           <Property Name="Id_Materia" Type="integer" Nullable="false" />
           <Property Name="Id_Ciclo" Type="integer" Nullable="false" />
+          <Property Name="Id" Type="integer" Nullable="false" />
         </EntityType>
         <EntityType Name="Materia">
           <Key>
@@ -135,18 +131,6 @@ advertencia 6002: La tabla o vista 'main.HorarioGrupo' no tiene definida ninguna
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HorarioGrupo_1_0">
-          <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
-          <End Role="HorarioGrupo" Type="Self.HorarioGrupo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Materia">
-              <PropertyRef Name="Id_Materia" />
-            </Principal>
-            <Dependent Role="HorarioGrupo">
-              <PropertyRef Name="Id_Materia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HorarioGrupo_2_0">
           <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
           <End Role="HorarioGrupo" Type="Self.HorarioGrupo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -158,21 +142,26 @@ advertencia 6002: La tabla o vista 'main.HorarioGrupo' no tiene definida ninguna
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HorarioGrupo_2_0">
+          <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
+          <End Role="HorarioGrupo" Type="Self.HorarioGrupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materia">
+              <PropertyRef Name="Id_Materia" />
+            </Principal>
+            <Dependent Role="HorarioGrupo">
+              <PropertyRef Name="Id_Materia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="mainModelStoreContainer">
           <EntitySet Name="Carrera" EntityType="Self.Carrera" store:Type="Tables" />
           <EntitySet Name="Ciclos" EntityType="Self.Ciclos" store:Type="Tables" />
           <EntitySet Name="Docente" EntityType="Self.Docente" store:Type="Tables" />
           <EntitySet Name="Grupo" EntityType="Self.Grupo" store:Type="Tables" />
           <EntitySet Name="HorarioDocente" EntityType="Self.HorarioDocente" store:Type="Tables" />
+          <EntitySet Name="HorarioGrupo" EntityType="Self.HorarioGrupo" store:Type="Tables" />
           <EntitySet Name="Materia" EntityType="Self.Materia" store:Type="Tables" />
-          <EntitySet Name="HorarioGrupo" EntityType="Self.HorarioGrupo" store:Type="Tables">
-            <DefiningQuery>SELECT 
-[HorarioGrupo].[Id] AS [Id], 
-[HorarioGrupo].[Id_Grupo] AS [Id_Grupo], 
-[HorarioGrupo].[Id_Materia] AS [Id_Materia], 
-[HorarioGrupo].[Id_Ciclo] AS [Id_Ciclo]
-FROM [HorarioGrupo] AS [HorarioGrupo]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Grupo_0_0" Association="Self.FK_Grupo_0_0">
             <End Role="Carrera" EntitySet="Carrera" />
             <End Role="Grupo" EntitySet="Grupo" />
@@ -194,11 +183,11 @@ FROM [HorarioGrupo] AS [HorarioGrupo]</DefiningQuery>
             <End Role="HorarioGrupo" EntitySet="HorarioGrupo" />
           </AssociationSet>
           <AssociationSet Name="FK_HorarioGrupo_1_0" Association="Self.FK_HorarioGrupo_1_0">
-            <End Role="Materia" EntitySet="Materia" />
+            <End Role="Grupo" EntitySet="Grupo" />
             <End Role="HorarioGrupo" EntitySet="HorarioGrupo" />
           </AssociationSet>
           <AssociationSet Name="FK_HorarioGrupo_2_0" Association="Self.FK_HorarioGrupo_2_0">
-            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="Materia" EntitySet="Materia" />
             <End Role="HorarioGrupo" EntitySet="HorarioGrupo" />
           </AssociationSet>
         </EntityContainer>
@@ -245,7 +234,7 @@ FROM [HorarioGrupo] AS [HorarioGrupo]</DefiningQuery>
           <Property Name="Cuatrimestre" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Id_Carrera" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Carrera" Relationship="Self.FK_Grupo_0_0" FromRole="Grupo" ToRole="Carrera" />
-          <NavigationProperty Name="HorarioGrupo" Relationship="Self.FK_HorarioGrupo_2_0" FromRole="Grupo" ToRole="HorarioGrupo" />
+          <NavigationProperty Name="HorarioGrupo" Relationship="Self.FK_HorarioGrupo_1_0" FromRole="Grupo" ToRole="HorarioGrupo" />
         </EntityType>
         <EntityType Name="HorarioDocente">
           <Key>
@@ -263,6 +252,19 @@ FROM [HorarioGrupo] AS [HorarioGrupo]</DefiningQuery>
           <NavigationProperty Name="Docente" Relationship="Self.FK_HorarioDocente_0_0" FromRole="HorarioDocente" ToRole="Docente" />
           <NavigationProperty Name="Materia" Relationship="Self.FK_HorarioDocente_1_0" FromRole="HorarioDocente" ToRole="Materia" />
         </EntityType>
+        <EntityType Name="HorarioGrupo">
+          <Key>
+            <PropertyRef Name="Id_HorarioGrupo" />
+          </Key>
+          <Property Name="Id_HorarioGrupo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Grupo" Type="Int64" Nullable="false" />
+          <Property Name="Id_Materia" Type="Int64" Nullable="false" />
+          <Property Name="Id_Ciclo" Type="Int64" Nullable="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Ciclos" Relationship="Self.FK_HorarioGrupo_0_0" FromRole="HorarioGrupo" ToRole="Ciclos" />
+          <NavigationProperty Name="Grupo" Relationship="Self.FK_HorarioGrupo_1_0" FromRole="HorarioGrupo" ToRole="Grupo" />
+          <NavigationProperty Name="Materia" Relationship="Self.FK_HorarioGrupo_2_0" FromRole="HorarioGrupo" ToRole="Materia" />
+        </EntityType>
         <EntityType Name="Materia">
           <Key>
             <PropertyRef Name="Id_Materia" />
@@ -271,22 +273,7 @@ FROM [HorarioGrupo] AS [HorarioGrupo]</DefiningQuery>
           <Property Name="Codigo_Materia" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nombre_Materia" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="HorarioDocente" Relationship="Self.FK_HorarioDocente_1_0" FromRole="Materia" ToRole="HorarioDocente" />
-          <NavigationProperty Name="HorarioGrupo" Relationship="Self.FK_HorarioGrupo_1_0" FromRole="Materia" ToRole="HorarioGrupo" />
-        </EntityType>
-        <EntityType Name="HorarioGrupo">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Id_Grupo" />
-            <PropertyRef Name="Id_Materia" />
-            <PropertyRef Name="Id_Ciclo" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" />
-          <Property Name="Id_Grupo" Type="Int64" Nullable="false" />
-          <Property Name="Id_Materia" Type="Int64" Nullable="false" />
-          <Property Name="Id_Ciclo" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Ciclos" Relationship="Self.FK_HorarioGrupo_0_0" FromRole="HorarioGrupo" ToRole="Ciclos" />
-          <NavigationProperty Name="Grupo" Relationship="Self.FK_HorarioGrupo_2_0" FromRole="HorarioGrupo" ToRole="Grupo" />
-          <NavigationProperty Name="Materia" Relationship="Self.FK_HorarioGrupo_1_0" FromRole="HorarioGrupo" ToRole="Materia" />
+          <NavigationProperty Name="HorarioGrupo" Relationship="Self.FK_HorarioGrupo_2_0" FromRole="Materia" ToRole="HorarioGrupo" />
         </EntityType>
         <Association Name="FK_Grupo_0_0">
           <End Role="Carrera" Type="Self.Carrera" Multiplicity="1" />
@@ -336,7 +323,7 @@ FROM [HorarioGrupo] AS [HorarioGrupo]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HorarioGrupo_2_0">
+        <Association Name="FK_HorarioGrupo_1_0">
           <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
           <End Role="HorarioGrupo" Type="Self.HorarioGrupo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -360,7 +347,7 @@ FROM [HorarioGrupo] AS [HorarioGrupo]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HorarioGrupo_1_0">
+        <Association Name="FK_HorarioGrupo_2_0">
           <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
           <End Role="HorarioGrupo" Type="Self.HorarioGrupo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -378,8 +365,8 @@ FROM [HorarioGrupo] AS [HorarioGrupo]</DefiningQuery>
           <EntitySet Name="Docente" EntityType="Self.Docente" />
           <EntitySet Name="Grupo" EntityType="Self.Grupo" />
           <EntitySet Name="HorarioDocente" EntityType="Self.HorarioDocente" />
-          <EntitySet Name="Materia" EntityType="Self.Materia" />
           <EntitySet Name="HorarioGrupo" EntityType="Self.HorarioGrupo" />
+          <EntitySet Name="Materia" EntityType="Self.Materia" />
           <AssociationSet Name="FK_Grupo_0_0" Association="Self.FK_Grupo_0_0">
             <End Role="Carrera" EntitySet="Carrera" />
             <End Role="Grupo" EntitySet="Grupo" />
@@ -396,7 +383,7 @@ FROM [HorarioGrupo] AS [HorarioGrupo]</DefiningQuery>
             <End Role="Docente" EntitySet="Docente" />
             <End Role="HorarioDocente" EntitySet="HorarioDocente" />
           </AssociationSet>
-          <AssociationSet Name="FK_HorarioGrupo_2_0" Association="Self.FK_HorarioGrupo_2_0">
+          <AssociationSet Name="FK_HorarioGrupo_1_0" Association="Self.FK_HorarioGrupo_1_0">
             <End Role="Grupo" EntitySet="Grupo" />
             <End Role="HorarioGrupo" EntitySet="HorarioGrupo" />
           </AssociationSet>
@@ -404,7 +391,7 @@ FROM [HorarioGrupo] AS [HorarioGrupo]</DefiningQuery>
             <End Role="Materia" EntitySet="Materia" />
             <End Role="HorarioDocente" EntitySet="HorarioDocente" />
           </AssociationSet>
-          <AssociationSet Name="FK_HorarioGrupo_1_0" Association="Self.FK_HorarioGrupo_1_0">
+          <AssociationSet Name="FK_HorarioGrupo_2_0" Association="Self.FK_HorarioGrupo_2_0">
             <End Role="Materia" EntitySet="Materia" />
             <End Role="HorarioGrupo" EntitySet="HorarioGrupo" />
           </AssociationSet>
@@ -467,22 +454,23 @@ FROM [HorarioGrupo] AS [HorarioGrupo]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="HorarioGrupo">
+            <EntityTypeMapping TypeName="mainModel.HorarioGrupo">
+              <MappingFragment StoreEntitySet="HorarioGrupo">
+                <ScalarProperty Name="Id_HorarioGrupo" ColumnName="Id_HorarioGrupo" />
+                <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
+                <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
+                <ScalarProperty Name="Id_Ciclo" ColumnName="Id_Ciclo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Materia">
             <EntityTypeMapping TypeName="mainModel.Materia">
               <MappingFragment StoreEntitySet="Materia">
                 <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
                 <ScalarProperty Name="Codigo_Materia" ColumnName="Codigo_Materia" />
                 <ScalarProperty Name="Nombre_Materia" ColumnName="Nombre_Materia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HorarioGrupo">
-            <EntityTypeMapping TypeName="mainModel.HorarioGrupo">
-              <MappingFragment StoreEntitySet="HorarioGrupo">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
-                <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
-                <ScalarProperty Name="Id_Ciclo" ColumnName="Id_Ciclo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

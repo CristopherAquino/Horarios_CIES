@@ -29,7 +29,9 @@ namespace Horarios_CIES.Views
         string nombreMateria;
         string nombredocente;
         string dia;
+        int indiceInicio;
         string horainicio;
+        int indiceFin;
         string horafin;
         bool flag = false;
         bool vacia = false;
@@ -54,25 +56,88 @@ namespace Horarios_CIES.Views
             {
                 if (vacia != false)
                 {
-                    foreach (DataGridViewRow fila in TablaMateriaDocente.Rows)
+                    if (click == 0)
                     {
-                        string inicio = fila.Cells[1].Value.ToString();
-                        int indexinicio = ComboInicio.FindStringExact(inicio) + 1;
-                        string fin = fila.Cells[2].Value.ToString();
-                        int indexfin = ComboFin.FindStringExact(fin) + 1;
-                        string diametodo = fila.Cells[0].Value.ToString();
-                        CompararAdicion(indexinicio, indexfin, diametodo, inicio, fin);
-                        TablaHorarioGrupoADD.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells);
-                    }
-                    if (flag == true)
-                    {
+                        foreach (DataGridViewRow fila in TablaMateriaDocente.Rows)
+                        {
+                            string inicio = fila.Cells[1].Value.ToString();
+                            int indexinicio = ComboInicio.FindStringExact(inicio) + 1;
+                            string fin = fila.Cells[2].Value.ToString();
+                            int indexfin = ComboFin.FindStringExact(fin) + 1;
+                            string diametodo = fila.Cells[0].Value.ToString();
+                            CompararAdicion(indexinicio, indexfin, diametodo, inicio, fin);
+                            TablaHorarioGrupoADD.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells);
+                        }
                         click = click + 1;
                         ComboCiclo.Enabled = false;
                         ComboGrupo.Enabled = false;
                     }
-                    TablaMateriaDocente.ClearSelection();
+                    else if (click != 0)
+                    {
+                        string diametodoexistente;
+                        string iniciometodoexistente;
+                        string finmetodoexistente;
+                        bool valida = true;
+
+                        foreach (DataGridViewRow fila in TablaPrueba.Rows)
+                        {
+                            diametodoexistente = fila.Cells[1].Value.ToString();
+                            iniciometodoexistente = fila.Cells[2].Value.ToString();
+                            finmetodoexistente = fila.Cells[3].Value.ToString();
+                            int inicioidexistente = ComboInicio.FindString(iniciometodoexistente);
+                            int finidexistente = ComboFin.FindString(finmetodoexistente);
+
+                            foreach (DataGridViewRow fila2 in TablaMateriaDocente.Rows)
+                            {
+                                string diaagregar = fila2.Cells[0].Value.ToString();
+                                string inicioagregar = fila2.Cells[1].Value.ToString();
+                                string finagregar = fila2.Cells[2].Value.ToString();
+                                int inicioidagregar = ComboInicio.FindString(inicioagregar);
+                                int finidagregar = ComboFin.FindString(finagregar);
+
+                                if (diaagregar.Equals(diametodoexistente))
+                                {
+                                    if ((inicioidagregar >= inicioidexistente) && (inicioidagregar <= finidexistente))
+                                    {
+                                        MessageBox.Show("LA HORA DE INICIO NO ESTA DISPONIBLE");
+                                        valida = false;
+                                        break;
+                                    }
+                                    else if ((finidagregar >= inicioidexistente) && (finidagregar <= inicioidexistente))
+                                    {
+                                        MessageBox.Show("EL FIN DE LA HORA NO ESTA DISPONIBLE");
+                                        valida = false;
+                                        break;
+                                    }
+                                    else if ((inicioidexistente >= inicioidagregar) && (finidexistente <= finidagregar))
+                                    {
+                                        MessageBox.Show("HORA OCUPADA POR OTRA MATERIA");
+                                        valida = false;
+                                        break;
+                                    }
+                                }
+                            }
+                            if(valida == false)
+                            {
+                                break;
+                            }
+                        }
+                        if (valida == true)
+                        {
+                            foreach (DataGridViewRow fila in TablaMateriaDocente.Rows)
+                            {
+                                string inicio = fila.Cells[1].Value.ToString();
+                                int indexinicio = ComboInicio.FindStringExact(inicio) + 1;
+                                string fin = fila.Cells[2].Value.ToString();
+                                int indexfin = ComboFin.FindStringExact(fin) + 1;
+                                string diametodo1 = fila.Cells[0].Value.ToString();
+                                CompararAdicion(indexinicio, indexfin, diametodo1, inicio, fin);
+                                TablaHorarioGrupoADD.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells);
+                            }
+                        }
+                    }
                 }
-                else { MessageBox.Show("MATERIA/DOCENTE SIN HORARIO ESTABLECIDO"); }
+                else { MessageBox.Show("MATERIA/DOCENTE/CICLO SIN HORARIO ESTABLECIDO"); }
             }
             catch (Exception a) { MessageBox.Show("ERROR: " + a.Message); }
         }
@@ -93,9 +158,9 @@ namespace Horarios_CIES.Views
                     {
                         foreach (DataGridViewRow row in dtDatos.Rows)
                         {
-                            int idgrupo = int.Parse(row.Cells["idgrupo"].Value.ToString());
-                            int idmateria = int.Parse(row.Cells["idmateria"].Value.ToString());
-                            int idciclo = int.Parse(row.Cells["idciclo"].Value.ToString());
+                            int idgrupo = int.Parse(row.Cells[0].Value.ToString());
+                            int idmateria = int.Parse(row.Cells[1].Value.ToString());
+                            int idciclo = int.Parse(row.Cells[2].Value.ToString());
 
                             horario.añadir(idmateria, idgrupo, idciclo, id);
                         }
@@ -107,7 +172,7 @@ namespace Horarios_CIES.Views
                 else { MessageBox.Show("HORARIO VACIO"); }
             }
             catch (Exception ex)
-            { MessageBox.Show("ERROR: " + ex.Message); }
+            { MessageBox.Show("ERROR: " + ex.InnerException.Message); }
         }
 
         private void ComboCiclo_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,6 +182,9 @@ namespace Horarios_CIES.Views
                 idC = (int?)ComboCiclo.SelectedValue;
                 TablaMateriaDocente.DataSource = horario.ObtenerTablaMaterias(idC, idM, idD);
                 vacia = horario.vacia(idC, idM, idD);
+                ComboMateria.DataSource = horario.comboMateria(idC);
+                ComboMateria.ValueMember = "Id_Materia";
+                ComboMateria.DisplayMember = "Nombre_Materia";
                 TablaMateriaDocente.ClearSelection();
             }
             catch (InvalidCastException) { }
@@ -176,14 +244,6 @@ namespace Horarios_CIES.Views
                 ComboCiclo.DataSource = horario.comboCiclo();
                 ComboCiclo.ValueMember = "Id_Ciclo";
                 ComboCiclo.DisplayMember = "Ciclo";
-
-                ComboMateria.DataSource = horario.comboMateria();
-                ComboMateria.ValueMember = "Id_Materia";
-                ComboMateria.DisplayMember = "Nombre_Materia";
-
-                ComboDocente.DataSource = horario.comboDocente();
-                ComboDocente.ValueMember = "Id_Docente";
-                ComboDocente.DisplayMember = "Nombre_Docente";
             }
             catch (Exception ex)
             {
@@ -202,12 +262,6 @@ namespace Horarios_CIES.Views
             else if (ComboCiclo.Text.Equals(""))
             {
                 MessageBox.Show("REGISTRE CICLOS");
-                btnAgregar.Enabled = false;
-                btnGuardar.Enabled = false;
-            }
-            else if (ComboMateria.Text.Equals(""))
-            {
-                MessageBox.Show("REGISTRE Materias");
                 btnAgregar.Enabled = false;
                 btnGuardar.Enabled = false;
             }
@@ -232,6 +286,10 @@ namespace Horarios_CIES.Views
                 idM = (int?)ComboMateria.SelectedValue;
                 TablaMateriaDocente.DataSource = horario.ObtenerTablaMaterias(idC, idM, idD);
                 vacia = horario.vacia(idC,idM,idD);
+
+                ComboDocente.DataSource = horario.comboDocente(idM);
+                ComboDocente.ValueMember = "Id_Docente";
+                ComboDocente.DisplayMember = "Nombre_Docente";
                 TablaMateriaDocente.ClearSelection();
             }
             catch (InvalidCastException) { }
@@ -443,11 +501,25 @@ namespace Horarios_CIES.Views
                 (int)ComboCiclo.SelectedValue);
             foreach(DataGridViewRow fila in TablaMateriaDocente.Rows)
             {
+                string a = fila.Cells[0].Value.ToString();
                 string b = fila.Cells[1].Value.ToString();
                 string c = fila.Cells[2].Value.ToString();
-                string a = fila.Cells[0].Value.ToString();
+ 
                 TablaPrueba.Rows.Add(ComboMateria.Text, a, b, c);
             }
+        }
+
+        private void ComboInicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            indiceInicio = ComboInicio.SelectedIndex;
+            horainicio = ComboInicio.Items[indiceInicio].ToString();
+        }
+
+        private void ComboFin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int indice = ComboFin.SelectedIndex;
+            indiceFin = indice;
+            horafin = ComboFin.Items[indice].ToString();
         }
     }
 }

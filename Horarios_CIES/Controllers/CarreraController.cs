@@ -16,14 +16,18 @@ namespace Horarios_CIES.Controllers
         {
             using (DBContextString db = new DBContextString())
             {
-                IEnumerable<CarreraModel> lst =
-                    (from d in db.Carrera
-                     select new CarreraModel
-                     {
-                         IdCarrera = (int)d.IdCarrera,
-                         Nombre_Carrera = d.Nombre_Carrera
-                     }).ToList();
-                return lst;
+                try
+                {
+                    IEnumerable<CarreraModel> lst =
+                        (from d in db.Carrera
+                         select new CarreraModel
+                         {
+                             IdCarrera = (int)d.IdCarrera,
+                             Nombre_Carrera = d.Nombre_Carrera
+                         }).ToList();
+                    return lst;
+                }
+                catch(Exception e) { return null; }
             }
         }
 

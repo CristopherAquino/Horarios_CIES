@@ -30,7 +30,7 @@ namespace Horarios_CIES.Models.DAO
         public virtual DbSet<Docente> Docente { get; set; }
         public virtual DbSet<Grupo> Grupo { get; set; }
         public virtual DbSet<HorarioDocente> HorarioDocente { get; set; }
-        public virtual DbSet<Materia> Materia { get; set; }
         public virtual DbSet<HorarioGrupo> HorarioGrupo { get; set; }
+        public virtual DbSet<Materia> Materia { get; set; }
     }
 }

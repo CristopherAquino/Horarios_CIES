@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4926cae68a8b4de186f09ff932780e5f" Name="Diagram1" ZoomLevel="62">
+      <Diagram DiagramId="23515a4aac1b4624a41be6de945d76b5" Name="Diagram1" ZoomLevel="50">
         <EntityTypeShape EntityType="mainModel.Carrera" Width="1.5" PointX="1.5" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="mainModel.Ciclos" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="mainModel.Docente" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="mainModel.Grupo" Width="1.5" PointX="3.75" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="mainModel.HorarioDocente" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mainModel.HorarioGrupo" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="mainModel.Materia" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="mainModel.HorarioGrupo" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
         <AssociationConnector Association="mainModel.FK_Grupo_0_0" ManuallyRouted="false" />
         <AssociationConnector Association="mainModel.FK_HorarioDocente_2_0" ManuallyRouted="false" />
         <AssociationConnector Association="mainModel.FK_HorarioGrupo_0_0" ManuallyRouted="false" />
         <AssociationConnector Association="mainModel.FK_HorarioDocente_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="mainModel.FK_HorarioGrupo_2_0" ManuallyRouted="false" />
-        <AssociationConnector Association="mainModel.FK_HorarioDocente_1_0" ManuallyRouted="false" />
         <AssociationConnector Association="mainModel.FK_HorarioGrupo_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="mainModel.FK_HorarioDocente_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="mainModel.FK_HorarioGrupo_2_0" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

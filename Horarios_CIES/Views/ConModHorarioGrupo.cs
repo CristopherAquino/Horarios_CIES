@@ -66,14 +66,6 @@ namespace Horarios_CIES.Views
                 ComboCiclo.DataSource = horario.comboCiclo();
                 ComboCiclo.ValueMember = "Id_Ciclo";
                 ComboCiclo.DisplayMember = "Ciclo";
-
-                ComboMateria.DataSource = horario.comboMateria();
-                ComboMateria.ValueMember = "Id_Materia";
-                ComboMateria.DisplayMember = "Nombre_Materia";
-
-                ComboDocente.DataSource = horario.comboDocente();
-                ComboDocente.ValueMember = "Id_Docente";
-                ComboDocente.DisplayMember = "Nombre_Docente";
             }
             catch (Exception ex)
             {
@@ -131,6 +123,10 @@ namespace Horarios_CIES.Views
                 idM = (int?)ComboMateria.SelectedValue;
                 TablaMateriaDocente.DataSource = horario.ObtenerTablaMaterias(idC, idM, idD);
                 vacia = horario.vacia(idC, idM, idD);
+
+                ComboDocente.DataSource = horario.comboDocente(idM);
+                ComboDocente.ValueMember = "Id_Docente";
+                ComboDocente.DisplayMember = "Nombre_Docente";
                 TablaMateriaDocente.ClearSelection();
             }
             catch (InvalidCastException) { }
@@ -155,6 +151,10 @@ namespace Horarios_CIES.Views
                 idC = (int?)ComboCiclo.SelectedValue;
                 TablaMateriaDocente.DataSource = horario.ObtenerTablaMaterias(idC, idM, idD);
                 vacia = horario.vacia(idC, idM, idD);
+
+                ComboMateria.DataSource = horario.comboMateria(idC);
+                ComboMateria.ValueMember = "Id_Materia";
+                ComboMateria.DisplayMember = "Nombre_Materia";
                 TablaMateriaDocente.ClearSelection();
             }
             catch (InvalidCastException) { }
@@ -249,9 +249,9 @@ namespace Horarios_CIES.Views
                         {
                             string dia = fila1.Cells[0].Value.ToString();
                             string inicio = fila1.Cells[1].Value.ToString();
-                            int indexinicio = ComboInicio.FindStringExact(inicio) + 1;
+                            int indexinicio = ComboInicio.FindStringExact(inicio);
                             string fin = fila1.Cells[2].Value.ToString();
-                            int indexfin = ComboFin.FindStringExact(fin) + 1;
+                            int indexfin = ComboFin.FindStringExact(fin);
 
                             foreach (DataGridViewRow fila in TablaPrueba.Rows)
                             {
@@ -275,6 +275,12 @@ namespace Horarios_CIES.Views
                                         MessageBox.Show("EL FIN DE LA HORA NO ESTA DISPONIBLE");
                                         valida = false;
                                     }
+                                    else if ((compainicio >= inicioid) && (compafin <= finid))
+                                    {
+                                        MessageBox.Show("HORA OCUPADA POR OTRA MATERIA");
+                                        valida = false;
+                                        break;
+                                    }
                                 }
                                 if (valida == true)
                                 {
@@ -284,6 +290,8 @@ namespace Horarios_CIES.Views
                                     Obtener();
                                 }
                             }
+                            if (valida == false)
+                            { break; }
                         }
                     }
                     else { MessageBox.Show("MATERIA O DOCENTE INVALIDO"); }
@@ -409,9 +417,7 @@ namespace Horarios_CIES.Views
                                                     }
                                                     flag = true;
                                                 }
-                                                else { MessageBox.Show("CHOQUE DE HORARIO" + Environment.NewLine + "VERIFIQUE REGISTROS"); flag = false; }
                                             }
-                                            else { MessageBox.Show("CHOQUE DE HORARIO" + Environment.NewLine + "VERIFIQUE REGISTROS"); flag = false; }
                                         }
                                         else if (indexInicio == indexFin)
                                         {
@@ -421,9 +427,7 @@ namespace Horarios_CIES.Views
                                                 TablaHorarioGrupoADD.Rows[indexhorainiciotabla].Cells[indexdiatabla].Value = mostrar;
                                                 flag = true;
                                             }
-                                            else { MessageBox.Show("CHOQUE DE MATERIAS" + Environment.NewLine + "VERIFIQUE REGISTROS"); flag = false; }
                                         }
-                                        else { MessageBox.Show("CHOQUE DE MATERIAS" + Environment.NewLine + "VERIFIQUE REGISTROS"); flag = false; }
                                     }
                                 }
                             }

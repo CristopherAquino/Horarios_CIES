@@ -117,20 +117,63 @@ namespace Horarios_CIES.Views
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (!ComboDia.Text.Equals("") &&
-            !ComboInicio.Text.Equals("") &&
-            !ComboFin.Text.Equals(""))
+            try
             {
-                CompararAdicion();
-                if (flag == true)
+                if (click == 0)
                 {
-                    click = click + 1;
+                    CompararAdicion();
                     TablaHorarioDocenteADD.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells);
+                    click = click + 1;
                     ComboDocente.Enabled = false;
                     ComboCiclo.Enabled = false;
                 }
+                else if (click != 0)
+                {
+                    string diametodo;
+                    string iniciometodo;
+                    string finmetodo;
+                    bool valida = true;
+
+                    foreach (DataGridViewRow fila in dtDatos.Rows)
+                    {
+                        int compainicio = indiceInicio;
+                        int compafin = indiceFin;
+                        diametodo = fila.Cells[3].Value.ToString();
+                        iniciometodo = fila.Cells[4].Value.ToString();
+                        finmetodo = fila.Cells[5].Value.ToString();
+                        int inicioid = ComboInicio.FindString(iniciometodo);
+                        int finid = ComboFin.FindString(finmetodo);
+
+                        if (dia.Equals(diametodo))
+                        {
+                            if ((compainicio >= inicioid) && (compainicio <= finid))
+                            {
+                                MessageBox.Show("LA HORA DE INICIO NO ESTA DISPONIBLE");
+                                valida = false;
+                                break;
+                            }
+                            else if ((compafin >= inicioid) && (compafin <= finid))
+                            {
+                                MessageBox.Show("EL FIN DE LA HORA NO ESTA DISPONIBLE");
+                                valida = false;
+                                break;
+                            }
+                            else if ((inicioid >= compainicio) && (finid <= compafin))
+                            {
+                                MessageBox.Show("HORA OCUPADA POR OTRA MATERIA");
+                                valida = false;
+                                break;
+                            }
+                        }
+                    }
+                    if(valida == true)
+                    {
+                        CompararAdicion();
+                        TablaHorarioDocenteADD.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells);
+                    }
+                }
             }
-            else { MessageBox.Show("AGREGUE DIA Y HORAS"); }
+            catch (Exception a) { MessageBox.Show("ERROR: " + a.Message); }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -212,9 +255,7 @@ namespace Horarios_CIES.Views
                                                     Datos();
                                                     flag = true;
                                                 }
-                                                else { MessageBox.Show("DIA Y HORAS OCUPADAS"); }
                                             }
-                                            else { MessageBox.Show("DIA Y HORAS OCUPADAS"); }
                                         }
                                         else if (indiceInicio == indiceFin)
                                         {
@@ -225,9 +266,7 @@ namespace Horarios_CIES.Views
                                                 flag = true;
                                                 Datos();
                                             }
-                                            else { MessageBox.Show("DIA Y HORA OCUPADO"); }
                                         }
-                                        else { MessageBox.Show("DIA Y HORA OCUPADO"); }
                                     }
                                 }
                             }

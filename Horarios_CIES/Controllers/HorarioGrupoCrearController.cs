@@ -42,32 +42,38 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public IEnumerable<ComboMateriaModel> comboMateria()
+        public IEnumerable<ComboMateriaModel> comboMateria(int? idc)
         {
             using (DBContextString db = new DBContextString())
             {
                 IEnumerable<ComboMateriaModel> lst =
                     (from d in db.Materia
+                     join g in db.HorarioDocente on d.Id_Materia equals g.Id_Materia
+                     where g.Id_Ciclo == idc
+                     orderby d.Id_Materia descending
                      select new ComboMateriaModel
                      {
                          Id_Materia = (int)d.Id_Materia,
                          Nombre_Materia = d.Nombre_Materia
-                     }).ToList();
+                     }).Distinct().ToList();
                 return lst;
             }
         }
 
-        public IEnumerable<ComboDocenteModel> comboDocente()
+        public IEnumerable<ComboDocenteModel> comboDocente(int? idm)
         {
             using (DBContextString db = new DBContextString())
             {
                 IEnumerable<ComboDocenteModel> lst =
                     (from d in db.Docente
+                     join g in db.HorarioDocente on d.Id_Docente equals g.Id_Docente
+                     where g.Id_Materia == idm
+                     orderby d.Id_Docente descending
                      select new ComboDocenteModel
                      {
                          Id_Docente = (int)d.Id_Docente,
                          Nombre_Docente = d.Nombre_Docente
-                     }).ToList();
+                     }).Distinct().ToList();
                 return lst;
             }
         }
@@ -89,7 +95,7 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public void añadir(int idM, int idG,int idC, int id)
+        public void añadir(int idM, int idG, int idC, int id)
         {
             using (DBContextString db = new DBContextString())
             {
@@ -99,9 +105,11 @@ namespace Horarios_CIES.Controllers
                 horario.Id_Ciclo = idC;
                 horario.Id = id;
                 db.HorarioGrupo.Add(horario);
+                db.Entry(horario).State = System.Data.Entity.EntityState.Added;
                 db.SaveChanges();
             }
         }
+
 
         public bool IsIENumerableLleno(IEnumerable<HorarioGrupoModel> ultimo)
         {

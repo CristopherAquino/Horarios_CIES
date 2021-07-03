@@ -49,32 +49,38 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public IEnumerable<ComboMateriaModel> comboMateria()
+        public IEnumerable<ComboMateriaModel> comboMateria(int? idc)
         {
             using (DBContextString db = new DBContextString())
             {
                 IEnumerable<ComboMateriaModel> lst =
                     (from d in db.Materia
+                     join g in db.HorarioDocente on d.Id_Materia equals g.Id_Materia
+                     where g.Id_Ciclo == idc
+                     orderby d.Id_Materia
                      select new ComboMateriaModel
                      {
                          Id_Materia = (int)d.Id_Materia,
                          Nombre_Materia = d.Nombre_Materia
-                     }).ToList();
+                     }).Distinct().ToList();
                 return lst;
             }
         }
 
-        public IEnumerable<ComboDocenteModel> comboDocente()
+        public IEnumerable<ComboDocenteModel> comboDocente(int? idm)
         {
             using (DBContextString db = new DBContextString())
             {
                 IEnumerable<ComboDocenteModel> lst =
                     (from d in db.Docente
+                     join g in db.HorarioDocente on d.Id_Docente equals g.Id_Docente
+                     where g.Id_Materia == idm
+                     orderby d.Id_Docente
                      select new ComboDocenteModel
                      {
                          Id_Docente = (int)d.Id_Docente,
                          Nombre_Docente = d.Nombre_Docente
-                     }).ToList();
+                     }).Distinct().ToList();
                 return lst;
             }
         }
