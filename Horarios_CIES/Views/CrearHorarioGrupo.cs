@@ -154,6 +154,7 @@ namespace Horarios_CIES.Views
                 if (click != 0)
                 {
                     existe();
+                    identifica();
                     if (unico == 0)
                     {
                         foreach (DataGridViewRow row in dtDatos.Rows)
@@ -161,8 +162,9 @@ namespace Horarios_CIES.Views
                             int idgrupo = int.Parse(row.Cells[0].Value.ToString());
                             int idmateria = int.Parse(row.Cells[1].Value.ToString());
                             int idciclo = int.Parse(row.Cells[2].Value.ToString());
+                            int iddocente = int.Parse(row.Cells[3].Value.ToString());
 
-                            horario.añadir(idmateria, idgrupo, idciclo, id);
+                            horario.añadir(idmateria, idgrupo, idciclo, id, iddocente);
                         }
                         aPDF();
                         limpiartabla();
@@ -413,6 +415,8 @@ namespace Horarios_CIES.Views
         {
             try
             {
+                string nombrecarrera = horario.nombrecarrera((int)ComboGrupo.SelectedValue);
+                string cuatrimestre = horario.cuatrimestre((int)ComboGrupo.SelectedValue);
                 Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
                 SaveFileDialog save = new SaveFileDialog();
                 save.InitialDirectory = @"C:";
@@ -440,9 +444,11 @@ namespace Horarios_CIES.Views
 
                     doc.Add(new Paragraph("UNIVERSIDAD CIES", FontFactory.GetFont("ARIAL", 24, iTextSharp.text.Font.BOLD, fontcolour)));
                     doc.Add(Chunk.NEWLINE);
-                    doc.Add(new Paragraph("CICLO: " + ComboCiclo.Text));
                     doc.Add(new Paragraph("HORARIO GRUPO"));
+                    doc.Add(new Paragraph("CARRERA: " + nombrecarrera));
+                    doc.Add(new Paragraph("CICLO: " + ComboCiclo.Text));
                     doc.Add(new Paragraph("GRUPO: " + ComboGrupo.Text));
+                    doc.Add(new Paragraph("CUATRIMESTRE: " + cuatrimestre));
 
                     PdfPTable tabla = new PdfPTable(TablaHorarioGrupoADD.Columns.Count);
                     tabla.DefaultCell.Padding = 2;
@@ -498,7 +504,7 @@ namespace Horarios_CIES.Views
         private void Datos()
         {
             dtDatos.Rows.Add((int)ComboGrupo.SelectedValue, (int)ComboMateria.SelectedValue,
-                (int)ComboCiclo.SelectedValue);
+                (int)ComboCiclo.SelectedValue, (int)ComboDocente.SelectedValue);
             foreach(DataGridViewRow fila in TablaMateriaDocente.Rows)
             {
                 string a = fila.Cells[0].Value.ToString();

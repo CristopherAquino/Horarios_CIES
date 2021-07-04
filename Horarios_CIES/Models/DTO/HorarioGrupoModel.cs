@@ -90,6 +90,12 @@ namespace Horarios_CIES.Models.DTO
         public string Hora_Fin { get; set; }
     }
 
+    public class PDFDATOS
+    {
+        public string Nombre_Carrera { get; set; }
+        public string Cuatrimestre { get; set; }
+    }
+
     public class HorarioGrupoModModel
     {
         [DisplayName("HORARIO")]

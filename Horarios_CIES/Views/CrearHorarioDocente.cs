@@ -183,6 +183,7 @@ namespace Horarios_CIES.Views
                 if (click != 0)
                 {
                     existe();
+                    identifica();
                     if (unico == 0)
                     {
                         foreach (DataGridViewRow row in dtDatos.Rows)
@@ -448,8 +449,8 @@ namespace Horarios_CIES.Views
 
                     doc.Add(new Paragraph("UNIVERSIDAD CIES", FontFactory.GetFont("ARIAL", 24, iTextSharp.text.Font.BOLD, fontcolour)));
                     doc.Add(Chunk.NEWLINE);
-                    doc.Add(new Paragraph("CICLO: "+ComboCiclo.Text));
                     doc.Add(new Paragraph("HORARIO DOCENTE"));
+                    doc.Add(new Paragraph("CICLO: "+ComboCiclo.Text));
                     doc.Add(new Paragraph("DOCENTE: " + ComboDocente.Text));
 
                     PdfPTable tabla = new PdfPTable(TablaHorarioDocenteADD.Columns.Count);

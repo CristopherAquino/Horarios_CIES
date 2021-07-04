@@ -42,6 +42,44 @@ namespace Horarios_CIES.Controllers
             }
         }
 
+        public string nombrecarrera(int g)
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                var nombrelst = (from d in db.Grupo.Where(x => x.Id_Grupo == g)
+                              select new PDFDATOS
+                              {
+                                  Nombre_Carrera = d.Carrera.Nombre_Carrera
+                              }).ToList();
+                string nombre = "";
+                foreach (PDFDATOS item in nombrelst)
+                {
+                    nombre = item.Nombre_Carrera;
+                    break;
+                }
+                return nombre;
+            }
+        }
+
+        public string cuatrimestre(int g)
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                var cuatrimestrelst = (from d in db.Grupo.Where(x => x.Id_Grupo == g)
+                              select new PDFDATOS
+                              {
+                                  Cuatrimestre = d.Cuatrimestre
+                              }).ToList();
+                string cuatrimestre = "";
+                foreach(PDFDATOS item in cuatrimestrelst)
+                {
+                    cuatrimestre = item.Cuatrimestre;
+                    break;
+                }
+                return cuatrimestre;
+            }
+        }
+
         public IEnumerable<ComboMateriaModel> comboMateria(int? idc)
         {
             using (DBContextString db = new DBContextString())
@@ -95,7 +133,7 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public void añadir(int idM, int idG, int idC, int id)
+        public void añadir(int idM, int idG, int idC, int id, int idD)
         {
             using (DBContextString db = new DBContextString())
             {
@@ -103,6 +141,7 @@ namespace Horarios_CIES.Controllers
                 horario.Id_Grupo = idG;
                 horario.Id_Materia = idM;
                 horario.Id_Ciclo = idC;
+                horario.Id_Docente = idD;
                 horario.Id = id;
                 db.HorarioGrupo.Add(horario);
                 db.Entry(horario).State = System.Data.Entity.EntityState.Added;
@@ -174,7 +213,7 @@ namespace Horarios_CIES.Controllers
                     (from d in db.HorarioGrupo.Where(o => o.Id_Grupo == id && o.Id_Ciclo == ciclo)
                      select new HorarioGrupoModel
                      {
-                         Id_Grupo = (int)d.Id_Grupo,
+                         Id_Grupo = (int)d.Id_Grupo
                      }).ToList();
                 return lst;
             }

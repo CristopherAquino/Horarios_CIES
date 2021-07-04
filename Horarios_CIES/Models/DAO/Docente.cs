@@ -18,6 +18,7 @@ namespace Horarios_CIES.Models.DAO
         public Docente()
         {
             this.HorarioDocente = new HashSet<HorarioDocente>();
+            this.HorarioGrupo = new HashSet<HorarioGrupo>();
         }
     
         public long Id_Docente { get; set; }
@@ -29,5 +30,7 @@ namespace Horarios_CIES.Models.DAO
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HorarioDocente> HorarioDocente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HorarioGrupo> HorarioGrupo { get; set; }
     }
 }

@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horarios_CIES", "Horarios_CIES\Horarios_CIES.csproj", "{DA1BFC37-3706-419A-986C-8BD01BD74C35}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup Horarios CIES", "Setup Horarios CIES\Setup Horarios CIES.vdproj", "{214DAADF-1E85-4539-B5DE-1AFA56398935}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{DA1BFC37-3706-419A-986C-8BD01BD74C35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA1BFC37-3706-419A-986C-8BD01BD74C35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA1BFC37-3706-419A-986C-8BD01BD74C35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{214DAADF-1E85-4539-B5DE-1AFA56398935}.Debug|Any CPU.ActiveCfg = Debug
+		{214DAADF-1E85-4539-B5DE-1AFA56398935}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

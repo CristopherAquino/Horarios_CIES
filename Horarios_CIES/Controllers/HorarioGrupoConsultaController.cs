@@ -17,7 +17,7 @@ namespace Horarios_CIES.Controllers
             {
                 IEnumerable<HorarioGrupoMostrarModel> lst =
                     (from d in db.HorarioGrupo
-                     join g in db.HorarioDocente on d.Id_Materia equals g.Id_Materia
+                     join g in db.HorarioDocente on d.Id_Docente equals g.Id_Docente
                      orderby d.Id
                      select new HorarioGrupoMostrarModel
                      {
@@ -25,7 +25,7 @@ namespace Horarios_CIES.Controllers
                          Ciclo = d.Ciclos.Ciclo,
                          Nombre_Grupo = d.Grupo.Nombre_Grupo,
                          Nombre_Materia = d.Materia.Nombre_Materia,
-                         Nombre_Docente = g.Docente.Nombre_Docente,
+                         Nombre_Docente = d.Docente.Nombre_Docente,
                          Dia = g.Dia,
                          Hora_Inicio = g.Hora_Inicio,
                          Hora_Fin = g.Hora_Fin
@@ -130,7 +130,7 @@ namespace Horarios_CIES.Controllers
             }
         }
 
-        public void Modificar(int id, int idC, int idG, int idMV, int idM)
+        public void Modificar(int id, int idC, int idG, int idMV, int idM, int idD)
         {
             using (DBContextString db = new DBContextString())
             {
@@ -146,6 +146,7 @@ namespace Horarios_CIES.Controllers
                 horario.Id_Grupo = idG;
                 horario.Id_Materia = idM;
                 horario.Id_Ciclo = idC;
+                horario.Id_Docente = idD;
                 db.HorarioGrupo.Add(horario);
                 db.SaveChanges();
             }
@@ -157,7 +158,7 @@ namespace Horarios_CIES.Controllers
             {
                 IEnumerable<HorarioGrupoMostrarModel> lst =
                     (from d in db.HorarioGrupo
-                     join g in db.HorarioDocente on d.Id_Materia equals g.Id_Materia
+                     join g in db.HorarioDocente on d.Id_Docente equals g.Id_Docente
                      where d.Grupo.Nombre_Grupo.Contains(s)
                      orderby d.Id
                      select new HorarioGrupoMostrarModel
@@ -166,12 +167,73 @@ namespace Horarios_CIES.Controllers
                          Ciclo = d.Ciclos.Ciclo,
                          Nombre_Grupo = d.Grupo.Nombre_Grupo,
                          Nombre_Materia = d.Materia.Nombre_Materia,
-                         Nombre_Docente = g.Docente.Nombre_Docente,
+                         Nombre_Docente = d.Docente.Nombre_Docente,
                          Dia = g.Dia,
                          Hora_Inicio = g.Hora_Inicio,
                          Hora_Fin = g.Hora_Fin
                      }).Distinct().ToList();
                 return lst;
+            }
+        }
+
+        public string nombrecarrera(int g)
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                var nombrelst = (from d in db.Grupo.Where(x => x.Id_Grupo == g)
+                                 select new PDFDATOS
+                                 {
+                                     Nombre_Carrera = d.Carrera.Nombre_Carrera
+                                 }).ToList();
+                string nombre = "";
+                foreach (PDFDATOS item in nombrelst)
+                {
+                    nombre = item.Nombre_Carrera;
+                    break;
+                }
+                return nombre;
+            }
+        }
+
+        public string cuatrimestre(int g)
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                var cuatrimestrelst = (from d in db.Grupo.Where(x => x.Id_Grupo == g)
+                                       select new PDFDATOS
+                                       {
+                                           Cuatrimestre = d.Cuatrimestre
+                                       }).ToList();
+                string cuatrimestre = "";
+                foreach (PDFDATOS item in cuatrimestrelst)
+                {
+                    cuatrimestre = item.Cuatrimestre;
+                    break;
+                }
+                return cuatrimestre;
+            }
+        }
+
+        public int? idgrupo(int id)
+        {
+            using (DBContextString db = new DBContextString())
+            {
+                try
+                {
+                    var idgrupo = (from d in db.HorarioGrupo.Where(x => x.Id == id)
+                                   select new HorarioGrupoModel
+                                   {
+                                       Id_Grupo = (int)d.Id_Grupo
+                                   }).ToList();
+                    int? idg = null;
+                    foreach (HorarioGrupoModel item in idgrupo)
+                    {
+                        idg = item.Id_Grupo;
+                        break;
+                    }
+                    return idg;
+                }
+                catch(Exception e) { return null; }
             }
         }
 
@@ -181,7 +243,7 @@ namespace Horarios_CIES.Controllers
             {
                 IEnumerable<HorarioGrupoImprimirModel> lst =
                     (from d in db.HorarioGrupo
-                     join g in db.HorarioDocente on d.Id_Materia equals g.Id_Materia
+                     join g in db.HorarioDocente on d.Id_Docente equals g.Id_Docente
                      orderby d.Id
                      where d.Id == id
                      select new HorarioGrupoImprimirModel
@@ -189,7 +251,7 @@ namespace Horarios_CIES.Controllers
                          Id = (int)d.Id,
                          Ciclo = d.Ciclos.Ciclo,
                          Nombre_Materia = d.Materia.Nombre_Materia,
-                         Nombre_Docente = g.Docente.Nombre_Docente,
+                         Nombre_Docente = d.Docente.Nombre_Docente,
                          Dia = g.Dia,
                          Hora_Inicio = g.Hora_Inicio,
                          Hora_Fin = g.Hora_Fin
@@ -204,7 +266,7 @@ namespace Horarios_CIES.Controllers
             {
                 IEnumerable<HorarioGrupoModModel> lst =
                     (from d in db.HorarioGrupo
-                     join g in db.HorarioDocente on d.Id_Materia equals g.Id_Materia
+                     join g in db.HorarioDocente on d.Id_Docente equals g.Id_Docente
                      orderby d.Id
                      where d.Id == numero && d.Id_Materia != idMV
                      select new HorarioGrupoModModel

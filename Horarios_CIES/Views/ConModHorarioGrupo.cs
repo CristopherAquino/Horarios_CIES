@@ -23,6 +23,7 @@ namespace Horarios_CIES.Views
         int? idM;
         int? idD;
         int? idC;
+        int? idgrupo;
         int? idhorario = 0;
         string nombreciclo;
         string nombregrupo;
@@ -193,6 +194,8 @@ namespace Horarios_CIES.Views
                 ComboMateria.Text = nombremateriavieja;
                 nombredocente = TablaHorarioGrupoCon.CurrentRow.Cells[4].Value.ToString();
                 ComboDocente.Text = nombredocente;
+
+                idgrupo = horario.idgrupo((int)idhorario);
             }
             catch (InvalidCastException a) { }
         }
@@ -286,7 +289,7 @@ namespace Horarios_CIES.Views
                                 {
                                     horario.Modificar((int)idhorario, (int)ComboCiclo.SelectedValue,
                                         (int)ComboGrupo.SelectedValue, idmateriavieja,
-                                        (int)ComboMateria.SelectedValue);
+                                        (int)ComboMateria.SelectedValue, (int)ComboDocente.SelectedValue);
                                     Obtener();
                                 }
                             }
@@ -482,6 +485,8 @@ namespace Horarios_CIES.Views
         {
             try
             {
+                string nombrecarrera = horario.nombrecarrera((int)idgrupo);
+                string cuatrimestre = horario.cuatrimestre((int)idgrupo);
                 Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
                 SaveFileDialog save = new SaveFileDialog();
                 save.InitialDirectory = @"C:";
@@ -509,9 +514,11 @@ namespace Horarios_CIES.Views
 
                     doc.Add(new Paragraph("UNIVERSIDAD CIES", FontFactory.GetFont("ARIAL", 24, iTextSharp.text.Font.BOLD, fontcolour)));
                     doc.Add(Chunk.NEWLINE);
-                    doc.Add(new Paragraph("CICLO: " + ComboCiclo.Text));
                     doc.Add(new Paragraph("HORARIO GRUPO"));
-                    doc.Add(new Paragraph("DOCENTE: " + nombregrupo));
+                    doc.Add(new Paragraph("CARRERA: " + nombrecarrera));
+                    doc.Add(new Paragraph("CICLO: " + ComboCiclo.Text));
+                    doc.Add(new Paragraph("GRUPO: " + ComboGrupo.Text));
+                    doc.Add(new Paragraph("CUATRIMESTRE: " + cuatrimestre));
 
                     PdfPTable tabla = new PdfPTable(TablaHorarioGrupoADD.Columns.Count);
                     tabla.DefaultCell.Padding = 2;
