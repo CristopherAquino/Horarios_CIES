@@ -241,7 +241,9 @@
     <Compile Include="Views\Menu.designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Content Include="CIES.ico" />
+    <Content Include="CIES.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Models\DAO\DBEntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBEntityModel.edmx</DependentUpon>

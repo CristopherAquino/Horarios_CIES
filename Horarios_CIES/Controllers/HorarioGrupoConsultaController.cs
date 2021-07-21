@@ -17,7 +17,7 @@ namespace Horarios_CIES.Controllers
             {
                 IEnumerable<HorarioGrupoMostrarModel> lst =
                     (from d in db.HorarioGrupo
-                     join g in db.HorarioDocente on d.Id_Docente equals g.Id_Docente
+                     join g in db.HorarioDocente on d.Id_Materia equals g.Id_Materia
                      orderby d.Id
                      select new HorarioGrupoMostrarModel
                      {
@@ -57,7 +57,7 @@ namespace Horarios_CIES.Controllers
                     (from d in db.Materia
                      join g in db.HorarioDocente on d.Id_Materia equals g.Id_Materia
                      where g.Id_Ciclo == idc
-                     orderby d.Id_Materia
+                     orderby d.Id_Materia descending
                      select new ComboMateriaModel
                      {
                          Id_Materia = (int)d.Id_Materia,
@@ -158,7 +158,7 @@ namespace Horarios_CIES.Controllers
             {
                 IEnumerable<HorarioGrupoMostrarModel> lst =
                     (from d in db.HorarioGrupo
-                     join g in db.HorarioDocente on d.Id_Docente equals g.Id_Docente
+                     join g in db.HorarioDocente on d.Id_Materia equals g.Id_Materia
                      where d.Grupo.Nombre_Grupo.Contains(s)
                      orderby d.Id
                      select new HorarioGrupoMostrarModel
@@ -243,7 +243,7 @@ namespace Horarios_CIES.Controllers
             {
                 IEnumerable<HorarioGrupoImprimirModel> lst =
                     (from d in db.HorarioGrupo
-                     join g in db.HorarioDocente on d.Id_Docente equals g.Id_Docente
+                     join g in db.HorarioDocente on d.Id_Materia equals g.Id_Materia
                      orderby d.Id
                      where d.Id == id
                      select new HorarioGrupoImprimirModel
@@ -266,7 +266,7 @@ namespace Horarios_CIES.Controllers
             {
                 IEnumerable<HorarioGrupoModModel> lst =
                     (from d in db.HorarioGrupo
-                     join g in db.HorarioDocente on d.Id_Docente equals g.Id_Docente
+                     join g in db.HorarioDocente on d.Id_Materia equals g.Id_Materia
                      orderby d.Id
                      where d.Id == numero && d.Id_Materia != idMV
                      select new HorarioGrupoModModel
